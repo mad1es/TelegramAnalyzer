@@ -1,9 +1,9 @@
 import Foundation
 
-/// Утилиты для оптимизации анализа чатов
+/// utilities for chat analysis optimization
 class AnalysisOptimizer {
     
-    /// Batch processing для больших наборов данных
+    /// process large datasets in batches
     static func processBatches<T, R>(
         items: [T],
         batchSize: Int = 1000,
@@ -20,7 +20,7 @@ class AnalysisOptimizer {
         return results
     }
     
-    /// Async batch processing для UI responsiveness
+    /// async batch processing for better ui performance
     static func processAsyncBatches<T, R>(
         items: [T],
         batchSize: Int = 1000,
@@ -38,23 +38,21 @@ class AnalysisOptimizer {
         return results
     }
     
-    /// Оптимизированный подсчет слов для больших текстов
+    /// fast word counting for large texts
     static func optimizedWordCount(text: String) -> Int {
-        // Используем более быстрый алгоритм
         return text.lazy
             .split(separator: " ")
             .count
     }
     
-    /// Оптимизированная фильтрация сообщений по отправителю
+    /// fast message filtering by sender
     static func fastFilterMessages(messages: [Message], by sender: String) -> [Message] {
-        // Используем lazy evaluation для оптимизации
         return messages.lazy
             .filter { $0.sender == sender }
             .map { $0 }
     }
     
-    /// Предварительная обработка данных для анализа
+    /// preprocess messages for faster analysis
     static func preprocessMessages(_ messages: [Message]) -> PreprocessedData {
         let sortedMessages = messages.sorted { $0.date < $1.date }
         let senderMap = Dictionary(grouping: messages, by: { $0.sender })
@@ -68,7 +66,7 @@ class AnalysisOptimizer {
     }
 }
 
-/// Предварительно обработанные данные для оптимизации анализа
+/// preprocessed data for analysis
 struct PreprocessedData {
     let sortedMessages: [Message]
     let senderGroups: [String: [Message]]
@@ -76,7 +74,7 @@ struct PreprocessedData {
     let dateRange: (start: Date?, end: Date?)
 }
 
-/// Memory-efficient итератор для больших чатов
+/// memory-efficient iterator for large chats
 struct MessageIterator: IteratorProtocol {
     private let messages: [Message]
     private var currentIndex = 0
@@ -93,7 +91,7 @@ struct MessageIterator: IteratorProtocol {
     }
 }
 
-/// Lazy sequence для memory-efficient обработки
+/// lazy sequence for memory-efficient processing
 struct LazyMessageProcessor: Sequence {
     let messages: [Message]
     
@@ -102,7 +100,7 @@ struct LazyMessageProcessor: Sequence {
     }
 }
 
-/// Performance monitoring утилита
+/// performance monitoring utility
 class PerformanceMonitor {
     private static var timers: [String: Date] = [:]
     

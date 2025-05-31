@@ -89,7 +89,7 @@ struct Chat: Identifiable, Codable {
     
     // MARK: - Advanced Analysis
     
-    // Анализ активности по времени суток
+    // activity analysis by hour
     func hourlyActivity(for sender: String) -> [Int: Int] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_hourlyActivity_\(sender)") {
             var activity: [Int: Int] = [:]
@@ -104,7 +104,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ длины сообщений
+    // message length stats
     func messageLengthStats(for sender: String) -> (min: Int, max: Int, average: Double) {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_messageLengthStats_\(sender)") {
             let lengths = messages(from: sender).map { $0.wordCount }
@@ -118,7 +118,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ времени ответа
+    // response time analysis
     func responseTimeAnalysis() -> [(sender: String, average: TimeInterval, min: TimeInterval, max: TimeInterval)] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_responseTimeAnalysis") {
             var responseTimes: [String: [TimeInterval]] = [:]
@@ -145,13 +145,13 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ инициации разговора
+    // conversation initiation analysis
     func conversationInitiationAnalysis() -> [(sender: String, count: Int, percentage: Double)] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_conversationInitiationAnalysis") {
             var initiations: [String: Int] = [:]
             let sortedMessages = messages.sorted { $0.date < $1.date }
             
-            // Определяем инициацию разговора как первое сообщение после паузы более 2 часов
+            // define conversation initiation as the first message after pause of more than 2 hours
             let twoHours: TimeInterval = 2 * 60 * 60
             
             for i in 1..<sortedMessages.count {
@@ -175,13 +175,13 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ "ghosting" (отсутствие ответа)
+    // ghosting analysis
     func ghostingAnalysis() -> [(sender: String, count: Int, totalTime: TimeInterval)] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_ghostingAnalysis") {
             var ghosting: [String: (count: Int, totalTime: TimeInterval)] = [:]
             let sortedMessages = messages.sorted { $0.date < $1.date }
             
-            // Считаем ghosting как отсутствие ответа более 24 часов
+            // count ghosting as absence of response for more than 24 hours
             let oneDay: TimeInterval = 24 * 60 * 60
             
             for i in 1..<sortedMessages.count {
@@ -203,7 +203,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ активности по дням недели
+    // weekday activity analysis
     func weekdayActivity() -> [Int: Int] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_weekdayActivity") {
             var activity: [Int: Int] = [:]
@@ -218,7 +218,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Анализ эмодзи и стикеров
+    // emoji and sticker analysis
     func emojiAnalysis() -> [(emoji: String, count: Int)] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_emojiAnalysis") {
             var emojiCount: [String: Int] = [:]
@@ -228,19 +228,19 @@ struct Chat: Identifiable, Codable {
                                                options: [.byComposedCharacterSequences]) { substring, _, _, _ in
                     guard let substring = substring else { return }
                     
-                    // Проверяем, содержит ли подстрока эмодзи
+                    // check if substring contains emoji
                     let containsEmoji = substring.unicodeScalars.contains { scalar in
                         scalar.properties.isEmoji && scalar.properties.isEmojiPresentation
                     }
                     
-                    // Дополнительная проверка для эмодзи с текстовым представлением
+                    // additional check for emoji with text representation
                     let isEmojiSequence = substring.unicodeScalars.count > 1 && 
                                         substring.unicodeScalars.contains { $0.properties.isEmoji }
                     
                     if containsEmoji || isEmojiSequence {
-                        // Исключаем простые цифры без эмодзи-селекторов
+                    
                         if substring.count == 1 && substring.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-                            return // Пропускаем простые цифры
+                            return // skip simple digits
                         }
                         
                         emojiCount[substring, default: 0] += 1
@@ -255,7 +255,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Группировка сообщений по месяцам для оси X графиков
+    // group messages by month for x axis of graphs
     var monthBuckets: [Date] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_monthBuckets") {
             let calendar = Calendar.current
@@ -266,14 +266,14 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Уникальные отправители
+    // unique senders
     var senders: [String] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_senders") {
             Array(Set(messages.map { $0.sender })).sorted()
         }
     }
     
-    // Calculate response times between messages
+    // calculate response times between messages
     func calculateResponseTimes() -> [(Message, TimeInterval)] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_calculateResponseTimes") {
             var responseTimes: [(Message, TimeInterval)] = []
@@ -283,7 +283,7 @@ struct Chat: Identifiable, Codable {
                 let currentMessage = sortedMessages[i]
                 let previousMessage = sortedMessages[i-1]
                 
-                // Only calculate response time if messages are from different senders
+                // only calculate response time if messages are from different senders
                 if currentMessage.sender != previousMessage.sender {
                     let timeInterval = currentMessage.date.timeIntervalSince(previousMessage.date)
                     responseTimes.append((currentMessage, timeInterval))
@@ -294,7 +294,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Get average response time for a specific sender
+    // get average response time for a specific sender
     func averageResponseTime(for sender: String) -> TimeInterval {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_averageResponseTime_\(sender)") {
             let responseTimes = calculateResponseTimes()
@@ -307,7 +307,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // Get response time statistics
+    // get response time statistics
     func responseTimeStats() -> (min: TimeInterval, max: TimeInterval, average: TimeInterval) {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_responseTimeStats") {
             let responseTimes = calculateResponseTimes()
@@ -324,19 +324,21 @@ struct Chat: Identifiable, Codable {
     
     // MARK: - Enhanced Analysis Methods
     
-    // 1. Enhanced Word Count Over Time Analysis
+    // 1. enhanced word count over time analysis
     func wordCountByMonth(for sender: String? = nil) -> [(date: Date, count: Int)] {
-        let calendar = Calendar.current
-        var monthlyWords: [Date: Int] = [:]
-        
-        let messagesToAnalyze = sender != nil ? messages(from: sender!) : messages
-        
-        for message in messagesToAnalyze {
-            guard let monthStart = calendar.date(from: calendar.dateComponents([.year, .month], from: message.date)) else { continue }
-            monthlyWords[monthStart, default: 0] += message.wordCount
+        return Self.analysisCache.getCachedResult(for: "\(cacheKey)_wordCountByMonth_\(sender ?? "all")") {
+            let calendar = Calendar.current
+            var monthlyWords: [Date: Int] = [:]
+            
+            let messagesToAnalyze = sender != nil ? messages(from: sender!) : messages
+            
+            for message in messagesToAnalyze {
+                guard let monthStart = calendar.date(from: calendar.dateComponents([.year, .month], from: message.date)) else { continue }
+                monthlyWords[monthStart, default: 0] += message.wordCount
+            }
+            
+            return monthlyWords.map { (date: $0.key, count: $0.value) }.sorted { $0.date < $1.date }
         }
-        
-        return monthlyWords.map { (date: $0.key, count: $0.value) }.sorted { $0.date < $1.date }
     }
     
     func wordsPerDay(for sender: String) -> Double {
@@ -346,7 +348,7 @@ struct Chat: Identifiable, Codable {
         return Double(totalWords) / Double(max(days, 1))
     }
     
-    // 2. Enhanced Message Length Analysis
+    // 2. enhanced message length analysis
     func maxMessageLengthByMonth(for sender: String) -> [(date: Date, maxLength: Int)] {
         let calendar = Calendar.current
         var monthlyMaxLength: [Date: Int] = [:]
@@ -373,7 +375,7 @@ struct Chat: Identifiable, Codable {
         return Double(top10.reduce(0) { $0 + $1.wordCount }) / Double(top10.count)
     }
     
-    // 3. Enhanced Ghosting Analysis (3+ hours within same day)
+    // 3. enhanced ghosting analysis 3+ hours
     func enhancedGhostingAnalysis() -> [(sender: String, ghostingEvents: [(date: Date, duration: TimeInterval)])] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_enhancedGhostingAnalysis") {
             var ghostingBySender: [String: [(date: Date, duration: TimeInterval)]] = [:]
@@ -388,7 +390,7 @@ struct Chat: Identifiable, Codable {
                 if currentMessage.sender != previousMessage.sender {
                     let timeInterval = currentMessage.date.timeIntervalSince(previousMessage.date)
                     
-                    // Check if both messages are on the same day and gap is more than 3 hours
+                    // check if both messages are on the same day and gap is more than 3 hours
                     if timeInterval > threeHours && 
                        calendar.isDate(currentMessage.date, inSameDayAs: previousMessage.date) {
                         ghostingBySender[previousMessage.sender, default: []].append((
@@ -443,7 +445,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // 4. Enhanced Conversation Initiation (6+ hours gap)
+    // 4. enhanced conversation initiation 6+ hours gap
     func enhancedConversationInitiation() -> [(sender: String, initiationsByMonth: [(date: Date, count: Int)])] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_enhancedConversationInitiation") {
             let calendar = Calendar.current
@@ -468,7 +470,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // 5. Enhanced Response Time Analysis
+    // 5. enhanced response time analysis
     func responseTimeByMonth(for sender: String) -> [(date: Date, averageTime: TimeInterval)] {
         let calendar = Calendar.current
         var monthlyResponseTimes: [Date: [TimeInterval]] = [:]
@@ -501,7 +503,7 @@ struct Chat: Identifiable, Codable {
         return rapidCounts.map { (sender: $0.key, count: $0.value) }
     }
     
-    // 6. Double Texting Analysis (1-6 hours without reply)
+    // 6. double texting analysis (1-6 hours without reply)
     func doubleTextingAnalysis() -> [(sender: String, doubleTextsByMonth: [(date: Date, count: Int)])] {
         return Self.analysisCache.getCachedResult(for: "\(cacheKey)_doubleTextingAnalysis") {
             let calendar = Calendar.current
@@ -569,7 +571,7 @@ struct Chat: Identifiable, Codable {
         return (date: date, sender: sender, count: maxCount)
     }
     
-    // 7. Most Used Words Analysis
+    // 7. most used words analysis
     func mostUsedWords(for sender: String? = nil, limit: Int = 50) -> [(word: String, count: Int)] {
         let fullCacheKey = "\(cacheKey)_mostUsedWords_\(sender ?? "all")_\(limit)"
         return Self.analysisCache.getCachedResult(for: fullCacheKey) {
@@ -598,7 +600,7 @@ struct Chat: Identifiable, Codable {
         }
     }
     
-    // 8. Enhanced Emoji Analysis
+    // 8. enhanced emoji analysis
     func enhancedEmojiAnalysis(for sender: String? = nil) -> [(emoji: String, count: Int)] {
         let fullCacheKey = "\(cacheKey)_enhancedEmojiAnalysis_\(sender ?? "all")"
         return Self.analysisCache.getCachedResult(for: fullCacheKey) {
@@ -606,24 +608,24 @@ struct Chat: Identifiable, Codable {
             let messagesToAnalyze = sender != nil ? messages(from: sender!) : messages
             
             for message in messagesToAnalyze {
-                // Используем enumerateSubstrings для правильного извлечения эмодзи
+                // use enumerateSubstrings for correct emoji extraction
                 message.text.enumerateSubstrings(in: message.text.startIndex..<message.text.endIndex, 
                                                options: [.byComposedCharacterSequences]) { substring, _, _, _ in
                     guard let substring = substring else { return }
                     
-                    // Проверяем, содержит ли подстрока эмодзи
+                    // check if substring contains emoji
                     let containsEmoji = substring.unicodeScalars.contains { scalar in
                         scalar.properties.isEmoji && scalar.properties.isEmojiPresentation
                     }
                     
-                    // Дополнительная проверка для эмодзи с текстовым представлением
+                    // additional check for emoji with text representation
                     let isEmojiSequence = substring.unicodeScalars.count > 1 && 
                                         substring.unicodeScalars.contains { $0.properties.isEmoji }
                     
                     if containsEmoji || isEmojiSequence {
-                        // Исключаем простые цифры без эмодзи-селекторов
+                        // exclude simple digits without emoji-selectors
                         if substring.count == 1 && substring.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-                            return // Пропускаем простые цифры
+                            return // skip simple digits
                         }
                         
                         emojiCount[substring, default: 0] += 1
@@ -650,19 +652,19 @@ struct Chat: Identifiable, Codable {
                                            options: [.byComposedCharacterSequences]) { substring, _, _, _ in
                 guard let substring = substring else { return }
                 
-                // Проверяем, содержит ли подстрока эмодзи
+                // Check if substring contains emoji
                 let containsEmoji = substring.unicodeScalars.contains { scalar in
                     scalar.properties.isEmoji && scalar.properties.isEmojiPresentation
                 }
                 
-                // Дополнительная проверка для эмодзи с текстовым представлением
+                // Additional check for emoji with text representation
                 let isEmojiSequence = substring.unicodeScalars.count > 1 && 
                                     substring.unicodeScalars.contains { $0.properties.isEmoji }
                 
                 if containsEmoji || isEmojiSequence {
-                    // Исключаем простые цифры без эмодзи-селекторов
+                    // Skip simple digits without emoji-selectors
                     if substring.count == 1 && substring.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-                        return // Пропускаем простые цифры
+                        return
                     }
                     
                     emojiCount += 1
