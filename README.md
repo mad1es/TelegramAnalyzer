@@ -45,7 +45,7 @@ open TelegramAnalyzer.xcodeproj
 TODO (maybe)
 	•	Export results (PDF/CSV)
 	•	Sticker/sticker pack usage
-	•	Dark mode (low priority)
+	•	Dark mode (low priority) // added
 	•	Graph polish
 
 Author
