@@ -1,70 +1,70 @@
 # Telegram Chat Analyzer 📱
 
-Приложение для анализа чатов в Telegram. Помогает понять, как вы общаетесь, кто пишет больше, кто отвечает быстрее и многое другое!
+An app for analyzing Telegram chats. Helps you understand your communication patterns, who texts more, who responds faster, and much more!
 
-## Что умеет приложение? 🤔
+## What can the app do? 
 
-- 📊 Показывает, кто пишет больше сообщений
-- ⏱️ Анализирует время ответа на сообщения
-- 👻 Находит моменты, когда вас "глостали" (долго не отвечали)
-- 📈 Показывает активность по времени суток
-- 📝 Анализирует длину сообщений
-- 🎯 Показывает, кто чаще начинает разговор
-- 😊 Считает использование эмодзи
+- 📊 Shows who sends more messages
+- ⏱️ Analyzes response times
+- 👻 Finds "ghosting" moments (when someone didn't respond for a long time)
+- 📈 Shows activity by time of day
+- 📝 Analyzes message length
+- 🎯 Shows who starts conversations more often
+- 😊 Counts emoji usage
 
-## Как начать пользоваться? 🚀
+## How to get started? 🚀
 
-1. Скачайте историю чата из Telegram:
-   - Откройте чат
-   - Нажмите на три точки в правом верхнем углу
-   - Выберите "Экспорт чата"
-   - Выберите формат JSON
-   - Сохраните файл
+1. Download your chat history from Telegram:
+   - Open the chat
+   - Click the three dots in the top right corner
+   - Select "Export chat"
+   - Choose JSON format
+   - Save the file
 
-2. Откройте приложение и импортируйте файл
+2. Open the app and import the file
 
-3. Выберите чат для анализа
+3. Select a chat to analyze
 
-4. Смотрите интересные графики и статистику! 📊
+4. Check out the cool graphs and stats! 📊
 
-## Технические детали для разработчиков 👨‍💻
+## Technical details for developers 👨‍💻
 
-Приложение написано на Swift с использованием SwiftUI. Вот основные части:
+The app is written in Swift using SwiftUI. Here are the main parts:
 
-### Основные файлы:
-- `Models/Chat.swift` - вся логика анализа чата
-- `Models/Message.swift` - структура сообщения
-- `Views/Analysis/` - все экраны с графиками и анализом
-- `Views/Main/` - главные экраны приложения
+### Main files:
+- `Models/Chat.swift` - all chat analysis logic
+- `Models/Message.swift` - message structure
+- `Views/Analysis/` - all screens with graphs and analysis
+- `Views/Main/` - main app screens
 
-### Как добавить новый анализ:
-1. Создайте новый файл в папке `Views/Analysis/`
-2. Добавьте нужные методы в `Chat.swift`
-3. Создайте красивый интерфейс с графиками
+### How to add new analysis:
+1. Create a new file in the `Views/Analysis/` folder
+2. Add needed methods to `Chat.swift`
+3. Create a nice interface with graphs
 
-## Установка и запуск 🛠️
+## Installation and running 🛠️
 
-1. Клонируйте репозиторий:
+1. Clone the repository:
 ```bash
 git clone https://github.com/mad1es/TelegramAnalyzer.git
 ```
 
-2. Откройте проект в Xcode
+2. Open the project in Xcode
 
-3. Запустите приложение (⌘R)
+3. Run the app (⌘R)
 
-## Что можно улучшить? 💡
+## What can be improved? 💡
 
-- Добавить больше графиков
-- Улучшить дизайн
-- Добавить анализ стикеров
-- Сделать темную тему
-- Добавить экспорт результатов
+- Add more graphs
+- Improve design
+- Add sticker analysis
+- Add dark theme
+- Add results export
 
-## Автор 👨‍💻
+## Author 👨‍💻
 
-Сделано с ❤️ студентом для студентов
+Made with ❤️ by a student for students
 
-## Лицензия 📄
+## License 📄
 
-MIT License - делайте что хотите с этим кодом! 
+MIT License - do whatever you want with this code! 
