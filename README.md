@@ -1,70 +1,54 @@
-# Telegram Chat Analyzer 📱
+Telegram Chat Analyzer
 
-An app for analyzing Telegram chats. Helps you understand your communication patterns, who texts more, who responds faster, and much more!
+A lightweight iOS app to analyze Telegram chat exports. Built for curiosity and occasional ego checks.
 
-## What can the app do? 
+Features
+	•	Message count per participant
+	•	Average response time & ghosting detection
+	•	Activity heatmap by time of day
+	•	Message length stats
+	•	Conversation starter tracking
+	•	Emoji usage breakdown
 
-- 📊 Shows who sends more messages
-- ⏱️ Analyzes response times
-- 👻 Finds "ghosting" moments (when someone didn't respond for a long time)
-- 📈 Shows activity by time of day
-- 📝 Analyzes message length
-- 🎯 Shows who starts conversations more often
-- 😊 Counts emoji usage
+How it works
+	1.	Export a chat from Telegram (JSON format). Only on Desktop version!!!
+	2.	Open the app, import the file
+	3.	Select a chat → get stats
 
-## How to get started? 🚀
+That’s it. No setup, no accounts, no BS.
 
-1. Download your chat history from Telegram:
-   - Open the chat
-   - Click the three dots in the top right corner
-   - Select "Export chat"
-   - Choose JSON format
-   - Save the file
+Stack
+	•	Swift + SwiftUI
+	•	Swift Charts for visualizations
+	•	Basic MVVM-ish structure
 
-2. Open the app and import the file
+Project structure
 
-3. Select a chat to analyze
+Models/
+  Chat.swift         // analysis logic
+  Message.swift      // message structure
 
-4. Check out the cool graphs and stats! 📊
+Views/
+  Main/              // app navigation & file import
+  Analysis/          // charts and data views
 
-## Technical details for developers 👨‍💻
+Adding new analysis
+	•	Write a new method in Chat.swift
+	•	Create a corresponding view in Views/Analysis/
+	•	Hook it up in the main screen
 
-The app is written in Swift using SwiftUI. Here are the main parts:
+Run locally
 
-### Main files:
-- `Models/Chat.swift` - all chat analysis logic
-- `Models/Message.swift` - message structure
-- `Views/Analysis/` - all screens with graphs and analysis
-- `Views/Main/` - main app screens
-
-### How to add new analysis:
-1. Create a new file in the `Views/Analysis/` folder
-2. Add needed methods to `Chat.swift`
-3. Create a nice interface with graphs
-
-## Installation and running 🛠️
-
-1. Clone the repository:
-```bash
 git clone https://github.com/mad1es/TelegramAnalyzer.git
-```
+open TelegramAnalyzer.xcodeproj
 
-2. Open the project in Xcode
+TODO (maybe)
+	•	Export results (PDF/CSV)
+	•	Sticker/sticker pack usage
+	•	Dark mode (low priority)
+	•	Graph polish
 
-3. Run the app (⌘R)
+Author
 
-## What can be improved? 💡
-
-- Add more graphs
-- Improve design
-- Add sticker analysis
-- Add dark theme
-- Add results export
-
-## Author 👨‍💻
-
-Made with ❤️ by a student for students
-
-## License 📄
-
-MIT License - do whatever you want with this code! 
+Built by @mad1es.
+Student project, but written like it’s not.
