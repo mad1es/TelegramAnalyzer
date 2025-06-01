@@ -150,7 +150,7 @@
 "double.total" = "умумий %d қош хәт";
 "double.percentage" = "барлиқ қош хәт пайизи %d%%";
 "double.mostDoubleTexts" = "Бир күндики әң көп қош хәт";
-"double.count" = "%d қош хәтниң умумий сани";
+"double.count" = "%d қош-қош йезиш";
 "double.youDoubleTexted" = "Сиз қош-қош яздиңиз";
 "double.theyDoubleTexted" = "%@ қош-қош язди";
 "double.times" = "%d қетим";
