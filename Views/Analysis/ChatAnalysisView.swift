@@ -58,7 +58,7 @@ struct ChatAnalysisView: View {
                 analysisContentView
             }
         }
-        .navigationTitle("Summary")
+        .navigationTitle("navigation.summary".localized)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -75,11 +75,11 @@ struct ChatAnalysisView: View {
     
     private var loadingView: some View {
         VStack(spacing: 20) {
-            ProgressView("Analyzing chat data...", value: loadingProgress, total: 1.0)
+            ProgressView("common.loading".localized, value: loadingProgress, total: 1.0)
                 .progressViewStyle(LinearProgressViewStyle())
                 .frame(maxWidth: 200)
             
-            Text("Processing \(chat.totalMessages) messages")
+            Text("import.processing".localized + " \(chat.totalMessages) " + "common.messages".localized.lowercased())
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
@@ -91,7 +91,7 @@ struct ChatAnalysisView: View {
             VStack(alignment: .leading, spacing: 20) {
                 // Header
                 HStack(alignment: .top) {
-                    Text("Summary")
+                    Text("navigation.summary".localized)
                         .font(.system(size: 36, weight: .bold))
                         .padding(.top, 10)
                     
@@ -104,16 +104,16 @@ struct ChatAnalysisView: View {
                     // Who texted more card
                     NavigationLink(destination: DetailView(chat: chat, card: .whoTextedMore)) {
                         AnalysisCardView(
-                            title: AnalysisCard.whoTextedMore.rawValue,
+                            title: "analysis.whoTextedMore".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("This chat is")
+                                    Text("analysis.thisChat".localized)
                                         .font(.subheadline)
                                     
-                                    Text("\(analysisResults.totalWords) words")
+                                    Text("\(analysisResults.totalWords) " + "common.words".localized.lowercased())
                                         .font(.system(size: 32, weight: .bold))
                                     
-                                    Text("\(analysisResults.whoTextedLessResult.0) texted less")
+                                    Text("\(analysisResults.whoTextedLessResult.0) " + "analysis.textedLess".localized)
                                         .font(.subheadline)
                                     
                                     Text("by \(analysisResults.whoTextedLessResult.1)%")
@@ -124,22 +124,22 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Longest message card
+                    // longest message card
                     NavigationLink(destination: DetailView(chat: chat, card: .longestMessage)) {
                         AnalysisCardView(
-                            title: AnalysisCard.longestMessage.rawValue,
+                            title: "analysis.longestMessage".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("Your longest message")
+                                    Text("longest.yourLongest".localized)
                                         .font(.subheadline)
                                     
-                                    Text("\(analysisResults.yourLongestMessage) words")
+                                    Text("longest.words".localized(with: analysisResults.yourLongestMessage))
                                         .font(.system(size: 32, weight: .bold))
                                     
-                                    Text("\(otherPersonName())'s longest message")
+                                    Text("analysis.theirLongestMessage".localized(with: otherPersonName()))
                                         .font(.subheadline)
                                     
-                                    Text("\(analysisResults.theirLongestMessage) words")
+                                    Text("longest.words".localized(with: analysisResults.theirLongestMessage))
                                         .font(.system(size: 32, weight: .bold))
                                 }
                             }
@@ -147,25 +147,26 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Ghosting card
+                    
+                    // ghosting card
                     NavigationLink(destination: DetailView(chat: chat, card: .ghosting)) {
                         AnalysisCardView(
-                            title: AnalysisCard.ghosting.rawValue,
+                            title: "analysis.ghosting".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     if let you = analysisResults.ghostingData.first {
-                                        Text("You 'ghosted'")
+                                        Text("ghosting.youGhosted".localized)
                                             .font(.subheadline)
                                         
-                                        Text("\(you.ghostingEvents.count) times")
+                                        Text("ghosting.times".localized(with: you.ghostingEvents.count))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                     
                                     if analysisResults.ghostingData.count > 1 {
-                                        Text("\(otherPersonName()) 'ghosted' you")
+                                        Text("ghosting.theyGhostedYou".localized(with: otherPersonName()))
                                             .font(.subheadline)
                                         
-                                        Text("\(analysisResults.ghostingData[1].ghostingEvents.count) times")
+                                        Text("ghosting.times".localized(with: analysisResults.ghostingData[1].ghostingEvents.count))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                 }
@@ -181,27 +182,27 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Conversation Initiation card
+                    // conversation initiation card
                     NavigationLink(destination: DetailView(chat: chat, card: .conversationInitiation)) {
                         AnalysisCardView(
-                            title: AnalysisCard.conversationInitiation.rawValue,
+                            title: "analysis.conversationInitiation".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     if let you = analysisResults.initiationData.first {
                                         let yourTotal = you.initiationsByMonth.reduce(0) { $0 + $1.count }
-                                        Text("You initiated")
+                                        Text("initiation.youInitiated".localized)
                                             .font(.subheadline)
                                         
-                                        Text("\(yourTotal) times")
+                                        Text("initiation.times".localized(with: yourTotal))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                     
                                     if analysisResults.initiationData.count > 1 {
                                         let theirTotal = analysisResults.initiationData[1].initiationsByMonth.reduce(0) { $0 + $1.count }
-                                        Text("\(otherPersonName()) initiated")
+                                        Text("initiation.theyInitiated".localized(with: otherPersonName()))
                                             .font(.subheadline)
                                         
-                                        Text("\(theirTotal) times")
+                                        Text("initiation.times".localized(with: theirTotal))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                 }
@@ -217,19 +218,19 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Response Time card
+                    // response time card
                     NavigationLink(destination: DetailView(chat: chat, card: .responseTime)) {
                         AnalysisCardView(
-                            title: AnalysisCard.responseTime.rawValue,
+                            title: "analysis.responseTime".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("Average response time")
+                                    Text("response.average".localized + " " + "response.title".localized.lowercased())
                                         .font(.subheadline)
                                     
                                     Text(formatTime(analysisResults.responseTimeStats.average))
                                         .font(.system(size: 32, weight: .bold))
                                     
-                                    Text("Fastest response")
+                                    Text("response.fastestResponse".localized)
                                         .font(.subheadline)
                                     
                                     Text(formatTime(analysisResults.responseTimeStats.min))
@@ -247,14 +248,14 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Hourly Activity card
+                    // hourly activity card
                     NavigationLink(destination: DetailView(chat: chat, card: .hourlyActivity)) {
                         AnalysisCardView(
-                            title: AnalysisCard.hourlyActivity.rawValue,
+                            title: "analysis.hourlyActivity".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     if let yourActive = analysisResults.mostActiveHours.first {
-                                        Text("Your most active hour")
+                                        Text("hourly.yourMostActiveHour".localized)
                                             .font(.subheadline)
                                         
                                         Text(String(format: "%02d:00", yourActive.hour))
@@ -262,7 +263,7 @@ struct ChatAnalysisView: View {
                                     }
                                     
                                     if analysisResults.mostActiveHours.count > 1 {
-                                        Text("\(otherPersonName())'s most active hour")
+                                        Text("hourly.theirMostActiveHour".localized(with: otherPersonName()))
                                             .font(.subheadline)
                                         
                                         Text(String(format: "%02d:00", analysisResults.mostActiveHours[1].hour))
@@ -281,27 +282,27 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Double Texting card
+                    // double texting card
                     NavigationLink(destination: DetailView(chat: chat, card: .doubleTexting)) {
                         AnalysisCardView(
-                            title: AnalysisCard.doubleTexting.rawValue,
+                            title: "analysis.doubleTexting".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     if let you = analysisResults.doubleTexts.first {
                                         let yourTotal = you.doubleTextsByMonth.reduce(0) { $0 + $1.count }
-                                        Text("You double texted")
+                                        Text("double.youDoubleTexted".localized)
                                             .font(.subheadline)
                                         
-                                        Text("\(yourTotal) times")
+                                        Text("double.times".localized(with: yourTotal))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                     
                                     if analysisResults.doubleTexts.count > 1 {
                                         let theirTotal = analysisResults.doubleTexts[1].doubleTextsByMonth.reduce(0) { $0 + $1.count }
-                                        Text("\(otherPersonName()) double texted")
+                                        Text("double.theyDoubleTexted".localized(with: otherPersonName()))
                                             .font(.subheadline)
                                         
-                                        Text("\(theirTotal) times")
+                                        Text("double.times".localized(with: theirTotal))
                                             .font(.system(size: 32, weight: .bold))
                                     }
                                 }
@@ -317,23 +318,23 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Most Used Words card
+                    // most used words card
                     NavigationLink(destination: DetailView(chat: chat, card: .mostUsedWords)) {
                         AnalysisCardView(
-                            title: AnalysisCard.mostUsedWords.rawValue,
+                            title: "analysis.mostUsedWords".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     if let topWord = analysisResults.mostUsedWords.first {
-                                        Text("Most used word")
+                                        Text("words.mostPopular".localized)
                                             .font(.subheadline)
                                         
                                         Text("\"\(topWord.word)\"")
                                             .font(.system(size: 24, weight: .bold))
                                         
-                                        Text("Used \(topWord.count) times")
+                                        Text("words.used".localized(with: topWord.count))
                                             .font(.subheadline)
                                         
-                                        Text("\(analysisResults.mostUsedWords.count) unique words")
+                                        Text("words.uniqueWords".localized(with: analysisResults.mostUsedWords.count))
                                             .font(.system(size: 20, weight: .bold))
                                     }
                                 }
@@ -349,33 +350,33 @@ struct ChatAnalysisView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Emoji Usage card
+                    // emoji usage card
                     NavigationLink(destination: DetailView(chat: chat, card: .emojiUsage)) {
                         AnalysisCardView(
-                            title: AnalysisCard.emojiUsage.rawValue,
+                            title: "analysis.emojiUsage".localized,
                             content: {
                                 VStack(alignment: .leading, spacing: 10) {
                                     let totalEmojis = analysisResults.emojiAnalysis.reduce(0) { $0 + $1.count }
                                     
                                     if let topEmoji = analysisResults.emojiAnalysis.first {
-                                        Text("Most used emoji")
+                                        Text("emoji.mostUsedEmoji".localized)
                                             .font(.subheadline)
                                         
                                         Text(topEmoji.emoji)
                                             .font(.system(size: 40))
                                         
-                                        Text("Used \(topEmoji.count) times")
+                                        Text("emoji.used".localized(with: topEmoji.count))
                                             .font(.subheadline)
                                     }
                                     
-                                    Text("\(totalEmojis) total emojis")
+                                    Text("\(totalEmojis) " + "emoji.totalEmojis".localized.lowercased())
                                         .font(.system(size: 20, weight: .bold))
                                 }
                             },
                             chart: {
                                 HStack {
                                     Spacer()
-                                    // Show top 3 emojis
+                                    // show top 3 emojis
                                     VStack(spacing: 4) {
                                         ForEach(Array(analysisResults.emojiAnalysis.prefix(3).enumerated()), id: \.element.emoji) { index, emoji in
                                             Text(emoji.emoji)
@@ -399,13 +400,13 @@ struct ChatAnalysisView: View {
     
     private func loadAnalysisResults() async {
         await PerformanceMonitor.measureAsyncTime(operation: "Total Analysis Loading") {
-            // Предварительная обработка данных один раз
+            // preprocess data once
             let preprocessedData = AnalysisOptimizer.preprocessMessages(chat.messages)
             
             await withTaskGroup(of: Void.self) { group in
                 var mutableChat = chat
                 
-                // Load basic stats - самые быстрые операции первыми
+                // load basic stats / fastest operations first
                 group.addTask {
                     await PerformanceMonitor.measureAsyncTime(operation: "Basic Stats") {
                         await MainActor.run {
@@ -415,7 +416,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load who texted less - используем предобработанные данные
+                // load who texted less / use preprocessed data
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Who Texted Less") {
                         return await Task.detached {
@@ -428,7 +429,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load longest messages - batch processing
+                // load longest messages / batch processing
                 group.addTask {
                     let (yours, theirs) = await PerformanceMonitor.measureAsyncTime(operation: "Longest Messages") {
                         return await Task.detached {
@@ -445,7 +446,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load ghosting analysis - async processing
+                // load ghosting analysis / async processing
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Ghosting Analysis") {
                         return await Task.detached {
@@ -458,7 +459,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load conversation initiation
+                // load conversation initiation
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Conversation Initiation") {
                         return await Task.detached {
@@ -471,7 +472,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load response time stats
+                // load response time stats
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Response Time Stats") {
                         return await Task.detached {
@@ -484,7 +485,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load most active hours - optimized
+                // load most active hours / optimized
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Most Active Hours") {
                         return await Task.detached {
@@ -503,7 +504,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load double texting - batch processing
+                // load double texting / batch processing
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Double Texting Analysis") {
                         return await Task.detached {
@@ -516,7 +517,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load most used words - heavy operation, optimized
+                // load most used words / heavy operation, optimized
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Most Used Words") {
                         return await Task.detached {
@@ -529,7 +530,7 @@ struct ChatAnalysisView: View {
                     }
                 }
                 
-                // Load emoji analysis - heaviest operation last
+                // load emoji analysis / heaviest operation last
                 group.addTask {
                     let result = await PerformanceMonitor.measureAsyncTime(operation: "Emoji Analysis") {
                         return await Task.detached {
@@ -549,9 +550,9 @@ struct ChatAnalysisView: View {
         }
     }
     
-    // MARK: - Optimized Helper methods
+    // MARK: - optimized helper methods
     
-    // Optimized version using preprocessed data
+    // optimized version using preprocessed data
     private func whoTextedLess(_ chat: Chat, preprocessedData: PreprocessedData) -> (String, String) {
         let senderCounts = preprocessedData.senderGroups.mapValues { messages in
             messages.reduce(0) { total, message in
@@ -573,7 +574,7 @@ struct ChatAnalysisView: View {
         return (minSender.key, "\(percentage)")
     }
     
-    // Optimized longest message calculation
+    // optimized longest message calculation
     private func yourLongestMessage(_ chat: Chat, preprocessedData: PreprocessedData) -> Int {
         guard let you = chat.senders.first,
               let yourMessages = preprocessedData.senderGroups[you] else { return 0 }
@@ -583,7 +584,7 @@ struct ChatAnalysisView: View {
         }.max() ?? 0
     }
     
-    // Optimized their longest message calculation  
+    // optimized their longest message calculation  
     private func theirLongestMessage(_ chat: Chat, preprocessedData: PreprocessedData) -> Int {
         guard chat.senders.count > 1,
               let them = chat.senders.last,
@@ -594,7 +595,7 @@ struct ChatAnalysisView: View {
         }.max() ?? 0
     }
     
-    // Returns the name of the other person in the chat
+    // returns the name of the other person in the chat
     private func otherPersonName() -> String {
         guard chat.senders.count > 1 else { return "Other" }
         return chat.senders[1]
@@ -608,7 +609,7 @@ struct ChatAnalysisView: View {
     }
 }
 
-// MARK: - Preview
+// MARK: - preview
 struct ChatAnalysisView_Previews: PreviewProvider {
     static var previews: some View {
         ChatAnalysisView(chat: Chat.sampleChat)

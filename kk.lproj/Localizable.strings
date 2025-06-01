@@ -1,0 +1,256 @@
+/* 
+  Localizable.strings
+  Kazakh
+*/
+
+// MARK: - Navigation & Titles
+"app.name" = "Талдау";
+"navigation.summary" = "Қорытынды";
+"navigation.chatAnalysis" = "Чат талдауы";
+"navigation.settings" = "Баптаулар";
+
+// MARK: - Main Screen
+"main.selectChat" = "Чатты таңдаңыз";
+"main.exportChat" = "Чатты экспорттаңыз";
+"main.supportedPlatforms" = "Қолдау көрсетілетін платформалар";
+"main.deleteChat" = "Чатты жою";
+"main.openChat" = "Чатты ашу";
+"main.telegram" = "Telegram";
+"main.whatsapp" = "WhatsApp";
+"main.noChats" = "Импортталған чаттар жоқ";
+
+// MARK: - Chat Import
+"import.selectFile" = "Файлды жүктеу";
+"import.processing" = "Өңдеу...";
+"import.error" = "Қате";
+"import.success" = "Сәтті";
+"import.chatImported" = "Чат сәтті импортталды";
+
+// MARK: - Analysis Cards
+"analysis.whoTextedMore" = "КІМ КӨБІРЕК ЖАЗАДЫ";
+"analysis.longestMessage" = "ЕҢ ҰЗЫН ХАБАРЛАМА";
+"analysis.ghosting" = "ЖАУАПСЫЗ ҚАЛДЫРУ";
+"analysis.conversationInitiation" = "ӘҢГІМЕ БАСТАМАШЫ";
+"analysis.responseTime" = "ЖАУАП БЕРУ УАҚЫТЫ";
+"analysis.hourlyActivity" = "САҒАТТЫҚ БЕЛСЕНДІЛІК";
+"analysis.doubleTexting" = "ҚОС ХАБАРЛАМА";
+"analysis.mostUsedWords" = "ЕҢ КӨП ҚОЛДАНЫЛҒАН СӨЗДЕР";
+"analysis.emojiUsage" = "ЭМОДЗИ ҚОЛДАНУ";
+
+// MARK: - Who Texted More
+"whoTexted.title" = "Кім көбірек жазды?";
+"whoTexted.week" = "Апта";
+"whoTexted.month" = "Ай";
+"whoTexted.year" = "Жыл";
+"whoTexted.all" = "Барлығы";
+"whoTexted.totalWords" = "барлық сөз";
+"whoTexted.averagePerDay" = "Күніне орташа сөз саны";
+"whoTexted.textedLess" = "%@ %@%% азырақ жазды";
+"whoTexted.numberOfWordsPerMonth" = "Айына сөз саны";
+"whoTexted.highlights" = "Негізгі көрсеткіштер";
+"whoTexted.totalWordsTitle" = "Барлық сөздер";
+"whoTexted.averageWordsPerDay" = "Күніне орташа сөз саны";
+"whoTexted.avgPerDay" = "Күніне орташа";
+
+// MARK: - Longest Message
+"longest.title" = "Ең ұзын хабарлама";
+"longest.yourLongest" = "Сіздің ең ұзын хабарламаңыз";
+"longest.theirLongest" = "Олардың ең ұзын хабарламасы";
+"longest.words" = "%d сөз";
+"longest.viewMessage" = "Хабарламаны көру";
+"longest.week" = "Апта";
+"longest.month" = "Ай";
+"longest.year" = "Жыл";
+"longest.all" = "Барлығы";
+"longest.highlights" = "Негізгі көрсеткіштер";
+"longest.maximumLength" = "Максималды ұзындық";
+"longest.averageMaxLength" = "Орташа макс. ұзындық";
+"longest.maxLengthPerMonth" = "Айына максималды хабарлама ұзындығы";
+"longest.topMessages" = "%@ топ хабарламалары";
+"longest.longestMessages" = "Ең ұзын хабарламалар";
+"longest.maxLength" = "Макс. ұзындық";
+"longest.avgTop10" = "Орташа топ 10";
+"longest.longestMessage" = "Ең ұзын хабарлама:";
+
+// MARK: - Ghosting
+"ghosting.title" = "Жауапсыз қалдыру талдауы";
+"ghosting.definition" = "Жауапсыз қалдырудың анықтамасы";
+"ghosting.definitionText" = "Жауапсыз қалдыру хабарлама 24 сағаттан астам жауапсыз қалғанда орын алады.";
+"ghosting.times" = "%d рет";
+"ghosting.avgDuration" = "орташа: %@";
+"ghosting.timeline" = "Жауапсыз қалдыру кестесі";
+"ghosting.summary" = "Жауапсыз қалдыру қорытындысы";
+"ghosting.youGhosted" = "Сіз жауапсыз қалдырдыңыз";
+"ghosting.theyGhostedYou" = "%@ сізді жауапсыз қалдырды";
+"ghosting.ghostingInstancesPerMonth" = "Айына жауапсыз қалдыру оқиғалары";
+"ghosting.theVanishingAct" = "Жоғалу актісі";
+"ghosting.ghostingStatistics" = "Жауапсыз қалдыру статистикасы";
+"ghosting.topGhoster" = "👻 Басты жауапсыз қалдырушы";
+"ghosting.ghostEvents" = "Жауапсыз қалдыру оқиғалары";
+"ghosting.totalHours" = "Барлық сағат";
+"ghosting.longestGhost" = "Ең ұзақ жауапсыз қалдыру:";
+"ghosting.ghostingDefinition" = "Жауапсыз қалдыру анықтамасы";
+"ghosting.definitionDetailText" = "Жауапсыз қалдыру оқиғасы адам хабарлама алып, бір күн ішінде 3 сағаттан астам жауап бермегенде орын алады.";
+
+// MARK: - Conversation Initiation
+"initiation.title" = "Әңгіме бастау";
+"initiation.conversationsStarted" = "басталған әңгімелер";
+"initiation.topInitiator" = "Басты бастамашы";
+"initiation.percentage" = "%d%%";
+"initiation.youInitiated" = "Сіз бастадыңыз";
+"initiation.theyInitiated" = "%@ бастады";
+"initiation.times" = "%d рет";
+"initiation.conversationsPerMonth" = "Айына басталған әңгімелер";
+"initiation.initiationStatistics" = "Бастау статистикасы";
+"initiation.totalInitiations" = "Барлық бастаулар";
+"initiation.participants" = "Қатысушылар";
+"initiation.initiations" = "Бастаулар";
+"initiation.ofTotal" = "жалпыдан";
+"initiation.mostActiveMonth" = "Ең белсенді ай";
+"initiation.conversationsStartedCount" = "%d әңгіме басталды";
+"initiation.initiationDefinition" = "Бастау анықтамасы";
+"initiation.definitionText" = "Әңгіме бастау адам 6 сағаттан астам белсенсіздіктен кейін хабарлама жібергенде орын алады.";
+
+// MARK: - Response Time
+"response.title" = "Жауап беру уақыты";
+"response.average" = "Орташа";
+"response.fastest" = "Ең жылдам";
+"response.slowest" = "Ең баяу";
+"response.yourAverage" = "Сіздің орташа";
+"response.theirAverage" = "Олардың орташасы";
+"response.fastestResponse" = "Ең жылдам жауап";
+"response.averageResponseTimePerMonth" = "Айына орташа жауап беру уақыты";
+"response.responseTimeStatistics" = "Жауап беру уақыты статистикасы";
+"response.longest" = "Ең ұзақ";
+"response.avgResponse" = "Орташа жауап";
+"response.rapidReplies" = "Жылдам жауаптар";
+"response.rapidExchanges" = "⚡ Жылдам алмасулар";
+"response.repliesUnder1Minute" = "1 минуттан аз жауаптар";
+"response.rapidRepliesCount" = "%d жылдам жауап";
+"response.longestWaitTimes" = "⏰ Ең ұзақ күту уақыттары";
+"response.responseTimeDefinition" = "Жауап беру уақыты анықтамасы";
+"response.definitionText" = "Жауап беру уақыты хабарлама алу мен жауап жіберу арасындағы уақыт ретінде есептеледі. Тек әртүрлі жіберушілерден келген дәйекті хабарламалар ескеріледі.";
+
+// MARK: - Hourly Activity
+"hourly.title" = "Сағаттық белсенділік";
+"hourly.mostActiveHour" = "Ең белсенді сағат";
+"hourly.messagesAt" = "%d хабарлама сағат %d:00-де";
+"hourly.activityPattern" = "Белсенділік үлгісі";
+"hourly.yourMostActiveHour" = "Сіздің ең белсенді сағатыңыз";
+"hourly.theirMostActiveHour" = "%@ ең белсенді сағаты";
+"hourly.messagePyramid" = "Хабарлама пирамидасы";
+"hourly.activityStatistics" = "Белсенділік статистикасы";
+"hourly.messageDistribution" = "Хабарлама таралуы";
+"hourly.definitionText" = "Пирамида диаграммасы 24 сағат бойы хабарламалардың таралуын көрсетеді. Әр жақ бір адамды білдіреді, ұзын жолақтар сол сағатта көбірек белсенділікті көрсетеді.";
+
+// MARK: - Double Texting
+"double.title" = "Қос хабарлама";
+"double.definition" = "Қос хабарлама анықтамасы";
+"double.definitionText" = "Қос хабарлама адам жауап алмай тұрып, алдыңғысынан кейін 1-6 сағат аралығында екінші хабарлама жібергенде орын алады.";
+"double.total" = "барлығы %d қос хабарлама";
+"double.percentage" = "барлық қос хабарламалардың %d%%";
+"double.mostDoubleTexts" = "Бір күндегі ең көп қос хабарлама";
+"double.count" = "%d қос хабарлама";
+"double.youDoubleTexted" = "Сіз қос хабарлама жібердіңіз";
+"double.theyDoubleTexted" = "%@ қос хабарлама жіберді";
+"double.times" = "%d рет";
+"double.doubleTextingPerMonth" = "Айына қос хабарлама";
+"double.peakDoubleTextingDay" = "📱 Қос хабарламаның шыңы күні";
+"double.sentDoubleTexts" = "%@ %d қос хабарлама жіберді";
+"double.doubleTextingStatistics" = "Қос хабарлама статистикасы";
+"double.totalDoubleTexts" = "Барлық қос хабарламалар";
+"double.participants" = "Қатысушылар";
+"double.doubleTexts" = "Қос хабарламалар";
+"double.ofTotal" = "жалпыдан";
+"double.topDoubleTexter" = "📱 Топ жіберуші";
+
+// MARK: - Most Used Words
+"words.title" = "Ең көп қолданылған сөздер";
+"words.filterAll" = "Барлығы";
+"words.mostPopular" = "Ең танымал сөз";
+"words.times" = "%d рет";
+"words.filterInfo" = "Сүзгі туралы ақпарат";
+"words.filterDescription" = "Ағылшын, орыс, қазақ және ұйғыр тілдеріндегі жалпы тоқтау сөздері сүзіледі. Сөздер регистрге қарамастан есептеледі.";
+"words.used" = "%d рет қолданылды";
+"words.uniqueWords" = "%d бірегей сөз";
+"words.uniqueWordsTitle" = "Бірегей сөздер";
+"words.selectUser" = "Пайдаланушыны таңдаңыз";
+"words.allUsers" = "барлық пайдаланушылар";
+"words.mostUsedWords" = "Ең көп қолданылған сөздер";
+"words.noWordsFound" = "Сөздер табылмады";
+"words.tryDifferentUser" = "Басқа пайдаланушыны таңдап көріңіз";
+"words.top10Words" = "Топ 10 сөз";
+"words.completeWordList" = "Толық сөз тізімі";
+"words.wordStatistics" = "Сөз статистикасы";
+"words.totalCount" = "Жалпы саны";
+"words.filterInformation" = "Сүзгі ақпараты";
+"words.filterDescriptionDetail" = "Ағылшын және орыс тілдеріндегі жалпы тоқтау сөздері сүзіледі (мысалы, \"the\", \"and\", \"и\", \"в\" және т.б.). Сөздер регистрге қарамастан есептеледі.";
+
+// MARK: - Emoji Usage
+"emoji.title" = "Эмодзи қолдану";
+"emoji.topEmoji" = "Топ эмодзи";
+"emoji.used" = "%d рет қолданылды";
+"emoji.totalEmojis" = "Барлық эмодзи";
+"emoji.uniqueEmojis" = "Бірегей эмодзи";
+"emoji.mostUsedEmoji" = "Ең көп қолданылған эмодзи";
+"emoji.mostUsedEmojis" = "Ең көп қолданылған эмодзилер";
+"emoji.selectUser" = "Пайдаланушыны таңдаңыз";
+"emoji.allUsers" = "барлық пайдаланушылар";
+"emoji.emojiUsageOverTime" = "Уақыт бойынша эмодзи қолдану";
+"emoji.noEmojiData" = "%@ үшін эмодзи деректері жоқ";
+"emoji.noEmojisFound" = "Эмодзи табылмады";
+"emoji.tryDifferentUser" = "Басқа пайдаланушыны таңдап көріңіз";
+"emoji.top10Detailed" = "Топ 10 толық";
+"emoji.emojiStatistics" = "Эмодзи статистикасы";
+"emoji.totalCount" = "Жалпы саны";
+"emoji.favorite" = "Сүйікті";
+"emoji.unique" = "Бірегей";
+"emoji.emojiUsageByPerson" = "Адам бойынша эмодзи қолдану";
+"emoji.emojiAnalysis" = "Эмодзи талдауы";
+"emoji.analysisDescription" = "Барлық Unicode эмодзи таңбалары есептеледі. Әр эмодзи тізбектерде немесе комбинацияларда қолданылған кезде де жеке есептеледі.";
+"emoji.percentOfAllEmojis" = "барлық эмодзилердің %.1f%%";
+"emoji.usedTimes" = "%d рет қолданылды";
+
+// MARK: - Chat Analysis
+"analysis.thisChat" = "Бұл чат";
+"analysis.textedLess" = "%@ азырақ жазды";
+"analysis.theirLongestMessage" = "%@ ең ұзын хабарламасы";
+
+// MARK: - Settings
+"settings.title" = "Баптаулар";
+"settings.theme" = "Тақырып";
+"settings.themeSystem" = "Жүйелік";
+"settings.themeLight" = "Жарық";
+"settings.themeDark" = "Қараңғы";
+"settings.language" = "Тіл";
+"settings.about" = "Қолданба туралы";
+"settings.version" = "Нұсқа";
+"settings.developer" = "Әзірлеуші";
+
+// MARK: - Time Formatting
+"time.lessThanMinute" = "<1мин";
+"time.minutes" = "%dмин";
+"time.hoursMinutes" = "%dсағ %dмин";
+"time.hours" = "%dсағ";
+"time.days" = "%d күн";
+
+// MARK: - Common Actions
+"action.view" = "Қарау";
+"action.close" = "Жабу";
+"action.delete" = "Жою";
+"action.cancel" = "Болдырмау";
+"action.confirm" = "Растау";
+"action.select" = "Таңдау";
+"action.done" = "Дайын";
+
+// MARK: - Common Words
+"common.you" = "Сіз";
+"common.them" = "Олар";
+"common.total" = "Барлығы";
+"common.average" = "Орташа";
+"common.messages" = "Хабарламалар";
+"common.words" = "Сөз";
+"common.loading" = "Жүктелуде...";
+"common.noData" = "Деректер жоқ";
+"common.error" = "Қате";
+"common.unknown" = "Белгісіз"; 

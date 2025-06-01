@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings
+  Russian
+*/
+
+// MARK: - Navigation & Titles
+"app.name" = "Анализ";
+"navigation.summary" = "Сводка";
+"navigation.chatAnalysis" = "Анализ чата";
+"navigation.settings" = "Настройки";
+
+// MARK: - Main Screen
+"main.selectChat" = "Выберите чат";
+"main.exportChat" = "Экспортируйте чат из";
+"main.supportedPlatforms" = "Поддерживаемые платформы";
+"main.deleteChat" = "Удалить чат";
+"main.openChat" = "Открыть чат";
+"main.telegram" = "Telegram";
+"main.whatsapp" = "WhatsApp";
+"main.noChats" = "Нет импортированных чатов";
+
+// MARK: - Chat Import
+"import.selectFile" = "Выбрать файл";
+"import.processing" = "Обработка...";
+"import.error" = "Ошибка";
+"import.success" = "Успешно";
+"import.chatImported" = "Чат успешно импортирован";
+
+// MARK: - Analysis Cards
+"analysis.whoTextedMore" = "КТО НАПИСАЛ БОЛЬШЕ";
+"analysis.longestMessage" = "САМОЕ ДЛИННОЕ СООБЩЕНИЕ";
+"analysis.ghosting" = "ИГНОРИРОВАНИЕ";
+"analysis.conversationInitiation" = "ИНИЦИАТОР РАЗГОВОРА";
+"analysis.responseTime" = "СКОРОСТЬ ОТВЕТА";
+"analysis.hourlyActivity" = "АКТИВНОСТЬ ПО ЧАСАМ";
+"analysis.doubleTexting" = "ДВОЙНЫЕ СООБЩЕНИЯ";
+"analysis.mostUsedWords" = "САМЫЕ ИСПОЛЬЗУЕМЫЕ СЛОВА";
+"analysis.emojiUsage" = "ИСПОЛЬЗОВАНИЕ ЭМОДЗИ";
+
+// MARK: - Who Texted More
+"whoTexted.title" = "Кто написал больше?";
+"whoTexted.week" = "Неделя";
+"whoTexted.month" = "Месяц";
+"whoTexted.year" = "Год";
+"whoTexted.all" = "Все";
+"whoTexted.totalWords" = "всего слов";
+"whoTexted.averagePerDay" = "Среднее количество слов в день";
+"whoTexted.textedLess" = "%@ написал(а) на %@%% меньше";
+"whoTexted.numberOfWordsPerMonth" = "Количество слов в месяц";
+"whoTexted.highlights" = "Основные показатели";
+"whoTexted.totalWordsTitle" = "Всего слов";
+"whoTexted.averageWordsPerDay" = "Среднее количество слов в день";
+"whoTexted.avgPerDay" = "Среднее в день";
+
+// MARK: - Longest Message
+"longest.title" = "Самое длинное сообщение";
+"longest.yourLongest" = "Ваше самое длинное сообщение";
+"longest.theirLongest" = "Их самое длинное сообщение";
+"longest.words" = "%d слов";
+"longest.viewMessage" = "Посмотреть сообщение";
+"longest.week" = "Неделя";
+"longest.month" = "Месяц";
+"longest.year" = "Год";
+"longest.all" = "Все";
+"longest.highlights" = "Основные показатели";
+"longest.maximumLength" = "Максимальная длина";
+"longest.averageMaxLength" = "Средняя макс. длина";
+"longest.maxLengthPerMonth" = "Максимальная длина сообщения в месяц";
+"longest.topMessages" = "Топ сообщений %@";
+"longest.longestMessages" = "Самые длинные сообщения";
+"longest.maxLength" = "Макс. длина";
+"longest.avgTop10" = "Средн. топ 10";
+"longest.longestMessage" = "Самое длинное сообщение:";
+
+// MARK: - Ghosting
+"ghosting.title" = "Анализ игнорирования";
+"ghosting.definition" = "Определение игнорирования";
+"ghosting.definitionText" = "Игнорирование происходит, когда сообщение остается без ответа более 24 часов.";
+"ghosting.times" = "%d раз";
+"ghosting.avgDuration" = "средн.: %@";
+"ghosting.timeline" = "График игнорирования";
+"ghosting.summary" = "Сводка по игнорированию";
+"ghosting.youGhosted" = "Вы игнорировали";
+"ghosting.theyGhostedYou" = "%@ игнорировал(а) вас";
+"ghosting.ghostingInstancesPerMonth" = "Случаи игнорирования в месяц";
+"ghosting.theVanishingAct" = "Исчезновение";
+"ghosting.ghostingStatistics" = "Статистика игнорирования";
+"ghosting.topGhoster" = "👻 Главный игнорщик";
+"ghosting.ghostEvents" = "Случаи игнорирования";
+"ghosting.totalHours" = "Всего часов";
+"ghosting.longestGhost" = "Самое долгое игнорирование:";
+"ghosting.ghostingDefinition" = "Определение игнорирования";
+"ghosting.definitionDetailText" = "Игнорирование происходит, когда человек получает сообщение, но не отвечает более 3 часов в течение одного дня.";
+
+// MARK: - Conversation Initiation
+"initiation.title" = "Начало разговора";
+"initiation.conversationsStarted" = "начатых разговоров";
+"initiation.topInitiator" = "Главный инициатор";
+"initiation.percentage" = "%d%%";
+"initiation.youInitiated" = "Вы начали";
+"initiation.theyInitiated" = "%@ начал(а)";
+"initiation.times" = "%d раз";
+"initiation.conversationsPerMonth" = "Начатые разговоры в месяц";
+"initiation.initiationStatistics" = "Статистика инициирования";
+"initiation.totalInitiations" = "Всего инициирований";
+"initiation.participants" = "Участники";
+"initiation.initiations" = "Инициирования";
+"initiation.ofTotal" = "от общего";
+"initiation.mostActiveMonth" = "Самый активный месяц";
+"initiation.conversationsStartedCount" = "%d разговоров начато";
+"initiation.initiationDefinition" = "Определение инициирования";
+"initiation.definitionText" = "Инициирование разговора происходит, когда человек отправляет сообщение после более чем 6 часов неактивности.";
+
+// MARK: - Response Time
+"response.title" = "Время ответа";
+"response.average" = "Среднее";
+"response.fastest" = "Самый быстрый";
+"response.slowest" = "Самый медленный";
+"response.yourAverage" = "Ваше среднее";
+"response.theirAverage" = "Их среднее";
+"response.fastestResponse" = "Самый быстрый ответ";
+"response.averageResponseTimePerMonth" = "Среднее время ответа в месяц";
+"response.responseTimeStatistics" = "Статистика времени ответа";
+"response.longest" = "Самое долгое";
+"response.avgResponse" = "Средн. ответ";
+"response.rapidReplies" = "Быстрые ответы";
+"response.rapidExchanges" = "⚡ Быстрые обмены";
+"response.repliesUnder1Minute" = "Ответы менее 1 минуты";
+"response.rapidRepliesCount" = "%d быстрых ответов";
+"response.longestWaitTimes" = "⏰ Самое долгое ожидание";
+"response.responseTimeDefinition" = "Определение времени ответа";
+"response.definitionText" = "Время ответа рассчитывается как время между получением сообщения и отправкой ответа. Учитываются только последовательные сообщения от разных отправителей.";
+
+// MARK: - Hourly Activity
+"hourly.title" = "Активность по часам";
+"hourly.mostActiveHour" = "Самый активный час";
+"hourly.messagesAt" = "%d сообщений в %d:00";
+"hourly.activityPattern" = "Паттерн активности";
+"hourly.yourMostActiveHour" = "Ваш самый активный час";
+"hourly.theirMostActiveHour" = "Самый активный час %@";
+"hourly.messagePyramid" = "Пирамида сообщений";
+"hourly.activityStatistics" = "Статистика активности";
+"hourly.messageDistribution" = "Распределение сообщений";
+"hourly.definitionText" = "Пирамида показывает распределение сообщений по 24 часам. Каждая сторона представляет одного человека, более длинные полосы указывают на большую активность в этот час.";
+
+// MARK: - Double Texting
+"double.title" = "Двойные сообщения";
+"double.definition" = "Определение двойных сообщений";
+"double.definitionText" = "Двойные сообщения происходят, когда человек отправляет второе сообщение через 1-6 часов после предыдущего, не получив ответа.";
+"double.total" = "%d всего двойных сообщений";
+"double.percentage" = "%d%% от всех двойных сообщений";
+"double.mostDoubleTexts" = "Больше всего двойных сообщений за день";
+"double.count" = "%d двойных сообщений";
+"double.youDoubleTexted" = "Вы отправили двойные сообщения";
+"double.theyDoubleTexted" = "%@ отправил(а) двойные сообщения";
+"double.times" = "%d раз";
+"double.doubleTextingPerMonth" = "Двойные сообщения в месяц";
+"double.peakDoubleTextingDay" = "📱 Пиковый день двойных сообщений";
+"double.sentDoubleTexts" = "%@ отправил(а) %d двойных сообщений";
+"double.doubleTextingStatistics" = "Статистика двойных сообщений";
+"double.totalDoubleTexts" = "Всего двойных сообщений";
+"double.participants" = "Участники";
+"double.doubleTexts" = "Двойные сообщения";
+"double.ofTotal" = "от общего";
+"double.topDoubleTexter" = "📱 Топ отправитель";
+
+// MARK: - Most Used Words
+"words.title" = "Самые используемые слова";
+"words.filterAll" = "Все";
+"words.mostPopular" = "Самое популярное слово";
+"words.times" = "%d раз";
+"words.filterInfo" = "Информация о фильтре";
+"words.filterDescription" = "Общие стоп-слова на английском, русском, казахском и уйгурском языках отфильтрованы. Слова подсчитываются независимо от регистра.";
+"words.used" = "Использовано %d раз";
+"words.uniqueWords" = "%d уникальных слов";
+"words.uniqueWordsTitle" = "Уникальные слова";
+"words.selectUser" = "Выберите пользователя";
+"words.allUsers" = "все пользователи";
+"words.mostUsedWords" = "Самые используемые слова";
+"words.noWordsFound" = "Слова не найдены";
+"words.tryDifferentUser" = "Попробуйте выбрать другого пользователя";
+"words.top10Words" = "Топ 10 слов";
+"words.completeWordList" = "Полный список слов";
+"words.wordStatistics" = "Статистика слов";
+"words.totalCount" = "Общее количество";
+"words.filterInformation" = "Информация о фильтре";
+"words.filterDescriptionDetail" = "Общие стоп-слова на английском и русском языках отфильтрованы (например, \"the\", \"and\", \"и\", \"в\" и т.д.). Слова подсчитываются независимо от регистра.";
+
+// MARK: - Emoji Usage
+"emoji.title" = "Использование эмодзи";
+"emoji.topEmoji" = "Топ эмодзи";
+"emoji.used" = "использовано %d раз";
+"emoji.totalEmojis" = "Всего эмодзи";
+"emoji.uniqueEmojis" = "Уникальных эмодзи";
+"emoji.mostUsedEmoji" = "Самый используемый эмодзи";
+"emoji.mostUsedEmojis" = "Самые используемые эмодзи";
+"emoji.selectUser" = "Выберите пользователя";
+"emoji.allUsers" = "все пользователи";
+"emoji.emojiUsageOverTime" = "Использование эмодзи со временем";
+"emoji.noEmojiData" = "Нет данных об эмодзи для %@";
+"emoji.noEmojisFound" = "Эмодзи не найдены";
+"emoji.tryDifferentUser" = "Попробуйте выбрать другого пользователя";
+"emoji.top10Detailed" = "Топ 10 подробно";
+"emoji.emojiStatistics" = "Статистика эмодзи";
+"emoji.uniqueEmojis" = "Уникальные эмодзи";
+"emoji.totalCount" = "Общее количество";
+"emoji.favorite" = "Любимый";
+"emoji.unique" = "Уникальные";
+"emoji.emojiUsageByPerson" = "Использование эмодзи по людям";
+"emoji.emojiAnalysis" = "Анализ эмодзи";
+"emoji.analysisDescription" = "Подсчитываются все символы эмодзи Unicode. Каждый эмодзи учитывается отдельно, даже при использовании в последовательностях или комбинациях.";
+"emoji.percentOfAllEmojis" = "%.1f%% от всех эмодзи";
+"emoji.usedTimes" = "Использовано %d раз";
+
+// MARK: - Chat Analysis
+"analysis.thisChat" = "Этот чат составляет";
+"analysis.textedLess" = "%@ написал(а) меньше";
+"analysis.theirLongestMessage" = "Самое длинное сообщение %@";
+
+// MARK: - Settings
+"settings.title" = "Настройки";
+"settings.theme" = "Тема";
+"settings.themeSystem" = "Системная";
+"settings.themeLight" = "Светлая";
+"settings.themeDark" = "Темная";
+"settings.language" = "Язык";
+"settings.about" = "О приложении";
+"settings.version" = "Версия";
+"settings.developer" = "Разработчик";
+
+// MARK: - Time Formatting
+"time.lessThanMinute" = "<1мин";
+"time.minutes" = "%dмин";
+"time.hoursMinutes" = "%dч %dмин";
+"time.hours" = "%dч";
+"time.days" = "%d дней";
+
+// MARK: - Common Actions
+"action.view" = "Просмотр";
+"action.close" = "Закрыть";
+"action.delete" = "Удалить";
+"action.cancel" = "Отмена";
+"action.confirm" = "Подтвердить";
+"action.select" = "Выбрать";
+"action.done" = "Готово";
+
+// MARK: - Common Words
+"common.you" = "Вы";
+"common.them" = "Они";
+"common.total" = "Всего";
+"common.average" = "Среднее";
+"common.messages" = "Сообщения";
+"common.words" = "Слова";
+"common.loading" = "Загрузка...";
+"common.noData" = "Нет данных";
+"common.error" = "Ошибка";
+"common.unknown" = "Неизвестно"; 

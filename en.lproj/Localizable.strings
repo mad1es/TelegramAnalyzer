@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings
+  English
+*/
+
+// MARK: - Navigation & Titles
+"app.name" = "Analysis";
+"navigation.summary" = "Summary";
+"navigation.chatAnalysis" = "Chat Analysis";
+"navigation.settings" = "Settings";
+
+// MARK: - Main Screen
+"main.selectChat" = "Select a Chat";
+"main.exportChat" = "Export a chat from";
+"main.supportedPlatforms" = "Supported platforms";
+"main.deleteChat" = "Delete Chat";
+"main.openChat" = "Open Chat";
+"main.telegram" = "Telegram";
+"main.whatsapp" = "WhatsApp";
+"main.noChats" = "No chats imported";
+
+// MARK: - Chat Import
+"import.selectFile" = "Select File";
+"import.processing" = "Processing...";
+"import.error" = "Error";
+"import.success" = "Success";
+"import.chatImported" = "Chat imported successfully";
+
+// MARK: - Analysis Cards
+"analysis.whoTextedMore" = "WHO TEXTED MORE";
+"analysis.longestMessage" = "LONGEST MESSAGE";
+"analysis.ghosting" = "GHOSTING";
+"analysis.conversationInitiation" = "CONVERSATION INITIATION";
+"analysis.responseTime" = "RESPONSE TIME";
+"analysis.hourlyActivity" = "HOURLY ACTIVITY";
+"analysis.doubleTexting" = "DOUBLE TEXTING";
+"analysis.mostUsedWords" = "MOST USED WORDS";
+"analysis.emojiUsage" = "EMOJI USAGE";
+
+// MARK: - Who Texted More
+"whoTexted.title" = "Who Texted More?";
+"whoTexted.week" = "Week";
+"whoTexted.month" = "Month";
+"whoTexted.year" = "Year";
+"whoTexted.all" = "All";
+"whoTexted.totalWords" = "total words";
+"whoTexted.averagePerDay" = "Average words per day";
+"whoTexted.textedLess" = "%@ texted %@%% less";
+"whoTexted.numberOfWordsPerMonth" = "Number of words per month";
+"whoTexted.highlights" = "Highlights";
+"whoTexted.totalWordsTitle" = "Total Words";
+"whoTexted.averageWordsPerDay" = "Average Words per Day";
+"whoTexted.avgPerDay" = "Avg per Day";
+
+// MARK: - Longest Message
+"longest.title" = "Longest Message";
+"longest.yourLongest" = "Your longest message";
+"longest.theirLongest" = "Their longest message";
+"longest.words" = "%d words";
+"longest.viewMessage" = "View Message";
+"longest.week" = "Week";
+"longest.month" = "Month";
+"longest.year" = "Year";
+"longest.all" = "All";
+"longest.highlights" = "Highlights";
+"longest.maximumLength" = "Maximum Length";
+"longest.averageMaxLength" = "Average Max Length";
+"longest.maxLengthPerMonth" = "Maximum message length per month";
+"longest.topMessages" = "%@'s Top Messages";
+"longest.longestMessages" = "Longest Messages";
+"longest.maxLength" = "Max Length";
+"longest.avgTop10" = "Avg Top 10";
+"longest.longestMessage" = "Longest message:";
+
+// MARK: - Ghosting
+"ghosting.title" = "Ghosting Analysis";
+"ghosting.definition" = "Ghosting Definition";
+"ghosting.definitionText" = "Ghosting happens when a message is left unanswered for more than 24 hours.";
+"ghosting.times" = "%d times";
+"ghosting.avgDuration" = "avg: %@";
+"ghosting.timeline" = "Ghosting Timeline";
+"ghosting.summary" = "Ghosting Summary";
+"ghosting.youGhosted" = "You 'ghosted'";
+"ghosting.theyGhostedYou" = "%@ 'ghosted' you";
+"ghosting.ghostingInstancesPerMonth" = "Ghosting instances per month";
+"ghosting.theVanishingAct" = "The Vanishing Act";
+"ghosting.ghostingStatistics" = "Ghosting Statistics";
+"ghosting.topGhoster" = "👻 Top Ghoster";
+"ghosting.ghostEvents" = "Ghost Events";
+"ghosting.totalHours" = "Total Hours";
+"ghosting.longestGhost" = "Longest ghost:";
+"ghosting.ghostingDefinition" = "Ghosting Definition";
+"ghosting.definitionDetailText" = "A ghosting event occurs when one person receives a message but does not reply for more than 3 hours within the same day.";
+
+// MARK: - Conversation Initiation
+"initiation.title" = "Conversation Initiation";
+"initiation.conversationsStarted" = "conversations started";
+"initiation.topInitiator" = "Top Initiator";
+"initiation.percentage" = "%d%%";
+"initiation.youInitiated" = "You initiated";
+"initiation.theyInitiated" = "%@ initiated";
+"initiation.times" = "%d times";
+"initiation.conversationsPerMonth" = "Conversation initiations per month";
+"initiation.initiationStatistics" = "Initiation Statistics";
+"initiation.totalInitiations" = "Total Initiations";
+"initiation.participants" = "Participants";
+"initiation.initiations" = "Initiations";
+"initiation.ofTotal" = "of Total";
+"initiation.mostActiveMonth" = "Most Active Month";
+"initiation.conversationsStartedCount" = "%d conversations started";
+"initiation.initiationDefinition" = "Initiation Definition";
+"initiation.definitionText" = "A conversation initiation occurs when a person sends a message after more than 6 hours of inactivity.";
+
+// MARK: - Response Time
+"response.title" = "Response Time";
+"response.average" = "Average";
+"response.fastest" = "Fastest";
+"response.slowest" = "Slowest";
+"response.yourAverage" = "Your average";
+"response.theirAverage" = "Their average";
+"response.fastestResponse" = "Fastest response";
+"response.averageResponseTimePerMonth" = "Average response time per month";
+"response.responseTimeStatistics" = "Response Time Statistics";
+"response.longest" = "Longest";
+"response.avgResponse" = "Avg Response";
+"response.rapidReplies" = "Rapid Replies";
+"response.rapidExchanges" = "⚡ Rapid Exchanges";
+"response.repliesUnder1Minute" = "Replies under 1 minute";
+"response.rapidRepliesCount" = "%d rapid replies";
+"response.longestWaitTimes" = "⏰ Longest Wait Times";
+"response.responseTimeDefinition" = "Response Time Definition";
+"response.definitionText" = "Response time is calculated as the time between receiving a message and sending a reply. Only consecutive messages from different senders are considered.";
+
+// MARK: - Hourly Activity
+"hourly.title" = "Hourly Activity";
+"hourly.mostActiveHour" = "Most Active Hour";
+"hourly.messagesAt" = "%d messages at %d:00";
+"hourly.activityPattern" = "Activity Pattern";
+"hourly.yourMostActiveHour" = "Your most active hour";
+"hourly.theirMostActiveHour" = "%@'s most active hour";
+"hourly.messagePyramid" = "Message Pyramid";
+"hourly.activityStatistics" = "Activity Statistics";
+"hourly.messageDistribution" = "Message Distribution";
+"hourly.definitionText" = "The pyramid chart shows message distribution across 24 hours. Each side represents one person, with longer bars indicating more activity during that hour.";
+
+// MARK: - Double Texting
+"double.title" = "Double Texting";
+"double.definition" = "Double Texting Definition";
+"double.definitionText" = "Double texting occurs when a person sends a second message between 1 to 6 hours after the previous one, without receiving a reply.";
+"double.total" = "%d total double texts";
+"double.percentage" = "%d%% of all double texts";
+"double.mostDoubleTexts" = "Most Double Texts in a Day";
+"double.count" = "%d double texts";
+"double.youDoubleTexted" = "You double texted";
+"double.theyDoubleTexted" = "%@ double texted";
+"double.times" = "%d times";
+"double.doubleTextingPerMonth" = "Double texting per month";
+"double.peakDoubleTextingDay" = "📱 Peak Double Texting Day";
+"double.sentDoubleTexts" = "%@ sent %d double texts";
+"double.doubleTextingStatistics" = "Double Texting Statistics";
+"double.totalDoubleTexts" = "Total Double Texts";
+"double.participants" = "Participants";
+"double.doubleTexts" = "Double Texts";
+"double.ofTotal" = "of Total";
+"double.topDoubleTexter" = "📱 Top Double Texter";
+
+// MARK: - Most Used Words
+"words.title" = "Most Used Words";
+"words.filterAll" = "All";
+"words.mostPopular" = "Most Popular Word";
+"words.times" = "%d times";
+"words.filterInfo" = "Filter Information";
+"words.filterDescription" = "Common stop words in English, Russian, Kazakh, and Uyghur are filtered out. Words are counted regardless of capitalization.";
+"words.used" = "Used %d times";
+"words.uniqueWords" = "%d unique words";
+"words.uniqueWordsTitle" = "Unique Words";
+"words.selectUser" = "Select User";
+"words.allUsers" = "all users";
+"words.mostUsedWords" = "Most Used Words";
+"words.noWordsFound" = "No words found";
+"words.tryDifferentUser" = "Try selecting a different user";
+"words.top10Words" = "Top 10 Words";
+"words.completeWordList" = "Complete Word List";
+"words.wordStatistics" = "Word Statistics";
+"words.totalCount" = "Total Count";
+"words.filterInformation" = "Filter Information";
+"words.filterDescriptionDetail" = "Common stop words in English and Russian are filtered out (e.g., \"the\", \"and\", \"и\", \"в\", etc.). Words are counted regardless of capitalization.";
+
+// MARK: - Emoji Usage
+"emoji.title" = "Emoji Usage";
+"emoji.topEmoji" = "Top Emoji";
+"emoji.used" = "used %d times";
+"emoji.totalEmojis" = "Total Emojis";
+"emoji.uniqueEmojis" = "Unique Emojis";
+"emoji.mostUsedEmoji" = "Most used emoji";
+"emoji.mostUsedEmojis" = "Most Used Emojis";
+"emoji.selectUser" = "Select User";
+"emoji.allUsers" = "all users";
+"emoji.emojiUsageOverTime" = "Emoji usage over time";
+"emoji.noEmojiData" = "No emoji usage data for %@";
+"emoji.noEmojisFound" = "No emojis found";
+"emoji.tryDifferentUser" = "Try selecting a different user";
+"emoji.top10Detailed" = "Top 10 Detailed";
+"emoji.emojiStatistics" = "Emoji Statistics";
+"emoji.uniqueEmojis" = "Unique Emojis";
+"emoji.totalCount" = "Total Count";
+"emoji.favorite" = "Favorite";
+"emoji.unique" = "Unique";
+"emoji.emojiUsageByPerson" = "Emoji Usage by Person";
+"emoji.emojiAnalysis" = "Emoji Analysis";
+"emoji.analysisDescription" = "All Unicode emoji characters are counted. Each emoji is counted separately, even when used in sequences or combinations.";
+"emoji.percentOfAllEmojis" = "%.1f%% of all emojis";
+"emoji.usedTimes" = "Used %d times";
+
+// MARK: - Chat Analysis
+"analysis.thisChat" = "This chat is";
+"analysis.textedLess" = "%@ texted less";
+"analysis.theirLongestMessage" = "%@'s longest message";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.theme" = "Theme";
+"settings.themeSystem" = "System";
+"settings.themeLight" = "Light";
+"settings.themeDark" = "Dark";
+"settings.language" = "Language";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.developer" = "Developer";
+
+// MARK: - Time Formatting
+"time.lessThanMinute" = "<1m";
+"time.minutes" = "%dm";
+"time.hoursMinutes" = "%dh %dm";
+"time.hours" = "%dh";
+"time.days" = "%d days";
+
+// MARK: - Common Actions
+"action.view" = "View";
+"action.close" = "Close";
+"action.delete" = "Delete";
+"action.cancel" = "Cancel";
+"action.confirm" = "Confirm";
+"action.select" = "Select";
+"action.done" = "Done";
+
+// MARK: - Common Words
+"common.you" = "You";
+"common.them" = "Them";
+"common.total" = "Total";
+"common.average" = "Average";
+"common.messages" = "Messages";
+"common.words" = "Words";
+"common.loading" = "Loading...";
+"common.noData" = "No data available";
+"common.error" = "Error";
+"common.unknown" = "Unknown"; 

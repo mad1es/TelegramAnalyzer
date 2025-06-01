@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedTab: Tab = .analyze
+    @EnvironmentObject var localizationManager: LocalizationManager
     
     enum Tab {
         case analyze, settings
@@ -11,24 +12,25 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             AnalyzeView()
                 .tabItem {
-                    Label("Analyze", systemImage: "chart.bar")
+                    Label("app.name".localized, systemImage: "chart.bar")
                 }
                 .tag(Tab.analyze)
             
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gearshape")
+                    Label("navigation.settings".localized, systemImage: "gearshape")
                 }
                 .tag(Tab.settings)
         }
     }
 }
 
-// MARK: - Preview
+    // MARK: - preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(PreviewEnvironment())
+            .environmentObject(LocalizationManager.shared)
     }
 }
 

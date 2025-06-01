@@ -7,10 +7,10 @@ struct GhostingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Summary card
+                // summary card
                 if let topGhoster = chat.topGhoster() {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("The Vanishing Act")
+                        Text("ghosting.theVanishingAct".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
@@ -35,9 +35,9 @@ struct GhostingView: View {
                     .padding(.horizontal)
                 }
                 
-                // Chart
+                // chart
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Ghosting instances per month")
+                    Text("ghosting.ghostingInstancesPerMonth".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -56,7 +56,11 @@ struct GhostingView: View {
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .month)) { value in
                             AxisGridLine()
-                            AxisValueLabel(format: .dateTime.month(.abbreviated))
+                            AxisValueLabel {
+                                if let date = value.as(Date.self) {
+                                    Text(formatMonthForChart(date))
+                                }
+                            }
                         }
                     }
                     .chartYAxis {
@@ -85,9 +89,9 @@ struct GhostingView: View {
                     .padding(.horizontal)
                 }
                 
-                // Individual stats
+                // individual stats
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Ghosting Statistics")
+                    Text("ghosting.ghostingStatistics".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
@@ -103,13 +107,13 @@ struct GhostingView: View {
                     }
                 }
                 
-                // Definition
+                // definition
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Ghosting Definition")
+                    Text("ghosting.ghostingDefinition".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
-                    Text("A ghosting event occurs when one person receives a message but does not reply for more than 3 hours within the same day.")
+                    Text("ghosting.definitionDetailText".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
@@ -131,10 +135,7 @@ struct GhostingView: View {
         }
     }
     
-    // private func colorForUser(_ sender: String) -> Color {
-    //     // Using global colorForUser function from View+Extensions.swift
-    //     return colorForUser(sender)
-    // }
+
     
     private func generateGhostingSummary(totalDays: Int, totalEvents: Int) -> String {
         let ghostingData = chat.enhancedGhostingAnalysis()
@@ -177,7 +178,7 @@ struct GhostingStatCard: View {
                     .fontWeight(.semibold)
                 
                 if isTopGhoster {
-                    Text("👻 Top Ghoster")
+                    Text("ghosting.topGhoster".localized)
                         .font(.caption)
                         .fontWeight(.bold)
                         .padding(.horizontal, 8)
@@ -197,7 +198,7 @@ struct GhostingStatCard: View {
                     Text("\(ghostingEvents.count)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Ghost Events")
+                    Text("ghosting.ghostEvents".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -209,7 +210,7 @@ struct GhostingStatCard: View {
                     Text(String(format: "%.1f", totalHours))
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Total Hours")
+                    Text("ghosting.totalHours".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -217,7 +218,7 @@ struct GhostingStatCard: View {
             
             if !ghostingEvents.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Longest ghost:")
+                    Text("ghosting.longestGhost".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     

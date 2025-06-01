@@ -31,13 +31,13 @@ struct AnalysisCardView<Content: View>: View {
                         .padding(.horizontal, 16)
                         .padding(.bottom, 16)
                     
-                    chart  // Always show chart (might be EmptyView)
+                    chart  
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white)
+        .background(Color("CardBackground"))
         .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
+        .shadow(color: Color(.label).opacity(0.05), radius: 5, x: 0, y: 2)
     }
 } 

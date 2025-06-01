@@ -13,10 +13,10 @@ struct WhoTextedMoreView: View {
         
         var displayName: String {
             switch self {
-            case .week: return "Week"
-            case .month: return "Month"
-            case .year: return "Year"
-            case .all: return "All"
+            case .week: return "whoTexted.week".localized
+            case .month: return "whoTexted.month".localized
+            case .year: return "whoTexted.year".localized
+            case .all: return "whoTexted.all".localized
             }
         }
     }
@@ -34,6 +34,7 @@ struct WhoTextedMoreView: View {
               let lastDate = chat.lastMessageDate else { return "" }
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MMM"
+        formatter.locale = Locale.current
         return "\(formatter.string(from: firstDate)) - \(formatter.string(from: lastDate))"
     }
     
@@ -45,7 +46,7 @@ struct WhoTextedMoreView: View {
                 highlightsSection
             }
         }
-        .navigationTitle("Who Texted More?")
+        .navigationTitle("whoTexted.title".localized)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -95,7 +96,7 @@ struct WhoTextedMoreView: View {
     
     private var chartSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Number of words per month")
+            Text("whoTexted.numberOfWordsPerMonth".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
@@ -117,7 +118,11 @@ struct WhoTextedMoreView: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { value in
                     AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated))
+                    AxisValueLabel {
+                        if let date = value.as(Date.self) {
+                            Text(formatMonthForChart(date))
+                        }
+                    }
                 }
             }
             .chartYAxis {
@@ -149,7 +154,7 @@ struct WhoTextedMoreView: View {
     
     private var highlightsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Highlights")
+            Text("whoTexted.highlights".localized)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
@@ -160,14 +165,14 @@ struct WhoTextedMoreView: View {
                     StatCard(
                         icon: "bubble.left.and.bubble.right",
                         value: "\(chat.totalWords)",
-                        title: "Total Words",
+                        title: "whoTexted.totalWordsTitle".localized,
                         color: .blue
                     )
                     
                     StatCard(
                         icon: "chart.line.uptrend.xyaxis",
                         value: "\(Int(averageWordsPerDay))",
-                        title: "Average Words per Day",
+                        title: "whoTexted.averageWordsPerDay".localized,
                         color: .orange
                     )
                 }
@@ -190,7 +195,6 @@ struct WhoTextedMoreView: View {
     private func getChartData() -> [(date: Date, data: [String: Int])] {
         var result: [(date: Date, data: [String: Int])] = []
         
-        // Get all months in the chat timeline
         let allMonths = Set(chat.messages.compactMap { message in
             Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: message.date))
         }).sorted()
@@ -212,6 +216,17 @@ struct WhoTextedMoreView: View {
         guard let first = chat.firstMessageDate, let last = chat.lastMessageDate else { return 0 }
         let days = Calendar.current.dateComponents([.day], from: first, to: last).day ?? 1
         return Double(chat.totalWords) / Double(max(days, 1))
+    }
+    
+    private func colorForUser(_ user: String) -> Color {
+        return user == chat.senders.first ? .pink : .orange
+    }
+    
+    private func formatMonthForChart(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        formatter.locale = LocalizationManager.shared.currentLanguage.locale
+        return formatter.string(from: date)
     }
 }
 
@@ -268,7 +283,7 @@ struct SenderStatsCard: View {
                     Text("\(totalWords)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Total Words")
+                    Text("whoTexted.totalWordsTitle".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -279,7 +294,7 @@ struct SenderStatsCard: View {
                     Text("\(averagePerDay)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Avg per Day")
+                    Text("whoTexted.avgPerDay".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

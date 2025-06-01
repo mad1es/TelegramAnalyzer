@@ -44,7 +44,7 @@ struct DoubleTextingView: View {
     
     private var chartSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Double texting per month")
+            Text("double.doubleTextingPerMonth".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
@@ -62,7 +62,11 @@ struct DoubleTextingView: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { value in
                     AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated))
+                    AxisValueLabel {
+                        if let date = value.as(Date.self) {
+                            Text(formatMonthForChart(date))
+                        }
+                    }
                 }
             }
             .chartYAxis {
@@ -112,7 +116,7 @@ struct DoubleTextingView: View {
                             .fill(colorForUser(peakDay.sender))
                             .frame(width: 12, height: 12)
                         
-                        Text("\(peakDay.sender) sent \(peakDay.count) double texts")
+                        Text("double.sentDoubleTexts".localized(with: peakDay.sender, peakDay.count))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -130,30 +134,30 @@ struct DoubleTextingView: View {
     
     private var statisticsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Double Texting Statistics")
+            Text("double.doubleTextingStatistics".localized)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
             
-            // Overall stats
+            // overall stats
             HStack(spacing: 16) {
                 StatCard(
                     icon: "message.badge",
                     value: "\(totalDoubleTexts)",
-                    title: "Total Double Texts",
+                    title: "double.totalDoubleTexts".localized,
                     color: .blue
                 )
                 
                 StatCard(
                     icon: "person.2",
                     value: "\(chat.senders.count)",
-                    title: "Participants",
+                    title: "double.participants".localized,
                     color: .green
                 )
             }
             .padding(.horizontal)
             
-            // Per sender breakdown
+            // per sender breakdown
             ForEach(doubleTextingData, id: \.sender) { data in
                 let senderTotal = data.doubleTextsByMonth.reduce(0) { $0 + $1.count }
                 let percentage = totalDoubleTexts > 0 ? Double(senderTotal) / Double(totalDoubleTexts) * 100 : 0
@@ -172,11 +176,11 @@ struct DoubleTextingView: View {
     
     private var definitionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Double Texting Definition")
+            Text("double.definition".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
-            Text("Double texting occurs when a person sends a second message between 1 to 6 hours after the previous one, without receiving a reply.")
+            Text("double.definitionText".localized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.horizontal)
@@ -199,11 +203,7 @@ struct DoubleTextingView: View {
         
         return result.sorted { $0.date < $1.date }
     }
-    
-    // private func colorForUser(_ sender: String) -> Color {
-    //     // Call global function directly to avoid recursion
-    //     return Extensions.colorForUser(sender)
-    // }
+
     
     private func isTopDoubleTexter(sender: String, allData: [(sender: String, doubleTextsByMonth: [(date: Date, count: Int)])]) -> Bool {
         let senderTotal = allData.first { $0.sender == sender }?.doubleTextsByMonth.reduce(0) { $0 + $1.count } ?? 0
@@ -256,7 +256,7 @@ struct DoubleTextingCard: View {
                     Text("\(totalDoubleTexts)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Double Texts")
+                    Text("double.doubleTexts".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -267,13 +267,13 @@ struct DoubleTextingCard: View {
                     Text(String(format: "%.1f%%", percentage))
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("of Total")
+                    Text("double.ofTotal".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
             
-            // Progress bar
+            // progress bar
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)

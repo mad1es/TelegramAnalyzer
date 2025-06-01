@@ -5,15 +5,13 @@ struct MostUsedWordsView: View {
     @State private var selectedSender: String? = nil
     
     var body: some View {
-        // Calculate data once at the top level
         let wordsData = chat.mostUsedWords(for: selectedSender, limit: 50)
         let totalWords = wordsData.reduce(0) { $0 + $1.count }
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Sender selection
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Select User")
+                    Text("words.selectUser".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -21,7 +19,7 @@ struct MostUsedWordsView: View {
                         Button(action: {
                             selectedSender = nil
                         }) {
-                            Text("all users")
+                            Text("words.allUsers".localized)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .padding(.vertical, 8)
@@ -58,9 +56,9 @@ struct MostUsedWordsView: View {
                     .padding(.horizontal)
                 }
                 
-                // Words list
+                // words list
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Most Used Words")
+                    Text("words.mostUsedWords".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
@@ -70,19 +68,19 @@ struct MostUsedWordsView: View {
                             Image(systemName: "text.bubble")
                                 .font(.system(size: 48))
                                 .foregroundColor(.gray)
-                            Text("No words found")
+                            Text("words.noWordsFound".localized)
                                 .font(.headline)
                                 .foregroundColor(.secondary)
-                            Text("Try selecting a different user")
+                            Text("words.tryDifferentUser".localized)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 40)
                     } else {
-                        // Top 10 words grid
+                        // top 10 words grid
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Top 10 Words")
+                            Text("words.top10Words".localized)
                                 .font(.headline)
                                 .padding(.horizontal)
                             
@@ -100,9 +98,9 @@ struct MostUsedWordsView: View {
                             .padding(.horizontal)
                         }
                         
-                        // Complete list
+                        // complete list
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Complete Word List")
+                            Text("words.completeWordList".localized)
                                 .font(.headline)
                                 .padding(.horizontal)
                             
@@ -120,26 +118,26 @@ struct MostUsedWordsView: View {
                     }
                 }
                 
-                // Statistics
+                // stats
                 if !wordsData.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Word Statistics")
+                        Text("words.wordStatistics".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
                         HStack(spacing: 16) {
                             StatCard(
-                                icon: "textformat.abc",
+                                icon: "textformat",
                                 value: "\(wordsData.count)",
-                                title: "Unique Words",
-                                color: .blue
+                                title: "words.uniqueWordsTitle".localized,
+                                color: .purple
                             )
                             
                             StatCard(
                                 icon: "sum",
                                 value: "\(totalWords)",
-                                title: "Total Count",
+                                title: "words.totalCount".localized,
                                 color: .green
                             )
                         }
@@ -147,7 +145,7 @@ struct MostUsedWordsView: View {
                         
                         if let topWord = wordsData.first {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Most Popular Word")
+                                Text("words.mostPopular".localized)
                                     .font(.headline)
                                 
                                 HStack {
@@ -158,7 +156,7 @@ struct MostUsedWordsView: View {
                                     
                                     Spacer()
                                     
-                                    Text("\(topWord.count) times")
+                                    Text("\(topWord.count) " + "words.times".localized)
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }
@@ -173,13 +171,13 @@ struct MostUsedWordsView: View {
                     }
                 }
                 
-                // Filter explanation
+                // filter explanation
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Filter Information")
+                    Text("words.filterInformation".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
-                    Text("Common stop words in English and Russian are filtered out (e.g., \"the\", \"and\", \"и\", \"в\", etc.). Words are counted regardless of capitalization.")
+                    Text("words.filterDescriptionDetail".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
@@ -190,7 +188,7 @@ struct MostUsedWordsView: View {
                 .padding(.horizontal)
             }
         }
-        .navigationTitle("Most Used Words")
+        .navigationTitle("words.mostUsedWords".localized)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -7,9 +7,9 @@ struct ResponseTimeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Chart
+                // chart
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Average response time per month")
+                    Text("response.averageResponseTimePerMonth".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -19,7 +19,7 @@ struct ResponseTimeView: View {
                             ForEach(chartData.filter { $0.sender == sender }, id: \.date) { dataPoint in
                                 LineMark(
                                     x: .value("Month", dataPoint.date, unit: .month),
-                                    y: .value("Response Time", dataPoint.averageTime / 60) // Convert to minutes
+                                    y: .value("Response Time", dataPoint.averageTime / 60) 
                                 )
                                 .foregroundStyle(by: .value("Sender", sender))
                                 .lineStyle(StrokeStyle(lineWidth: 3))
@@ -32,7 +32,11 @@ struct ResponseTimeView: View {
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .month)) { value in
                             AxisGridLine()
-                            AxisValueLabel(format: .dateTime.month(.abbreviated))
+                            AxisValueLabel {
+                                if let date = value.as(Date.self) {
+                                    Text(formatMonthForChart(date))
+                                }
+                            }
                         }
                     }
                     .chartYAxis {
@@ -68,40 +72,38 @@ struct ResponseTimeView: View {
                     .padding(.horizontal)
                 }
                 
-                // Quick stats overview
+                // quick stats overview
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Response Time Statistics")
+                    Text("response.responseTimeStatistics".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
                     
-                    // Overall stats
                     let overallStats = chat.responseTimeStats()
                     HStack(spacing: 12) {
                         StatCard(
                             icon: "speedometer",
                             value: formatTime(overallStats.average),
-                            title: "Average",
+                            title: "response.average".localized,
                             color: .blue
                         )
                         
                         StatCard(
                             icon: "bolt.fill",
                             value: formatTime(overallStats.min),
-                            title: "Fastest",
+                            title: "response.fastest".localized,
                             color: .green
                         )
                         
                         StatCard(
                             icon: "clock.fill",
                             value: formatTime(overallStats.max),
-                            title: "Longest",
+                            title: "response.longest".localized,
                             color: .red
                         )
                     }
                     .padding(.horizontal)
                     
-                    // Per sender breakdown
                     ForEach(chat.senders, id: \.self) { sender in
                         ResponseTimeCard(
                             sender: sender,
@@ -114,14 +116,14 @@ struct ResponseTimeView: View {
                     }
                 }
                 
-                // Rapid exchanges highlight
+                // rapid exchanges highlight
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("⚡ Rapid Exchanges")
+                    Text("response.rapidExchanges".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
                     
-                    Text("Replies under 1 minute")
+                    Text("response.repliesUnder1Minute".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
@@ -139,7 +141,7 @@ struct ResponseTimeView: View {
                             
                             Spacer()
                             
-                            Text("\(rapid.count) rapid replies")
+                            Text("response.rapidRepliesCount".localized(with: rapid.count))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
@@ -152,9 +154,9 @@ struct ResponseTimeView: View {
                     }
                 }
                 
-                // Longest wait times
+                // longest wait times
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("⏰ Longest Wait Times")
+                    Text("response.longestWaitTimes".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
@@ -171,13 +173,13 @@ struct ResponseTimeView: View {
                     }
                 }
                 
-                // Definition
+                // definition
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Response Time Definition")
+                    Text("response.responseTimeDefinition".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
-                    Text("Response time is calculated as the time between receiving a message and sending a reply. Only consecutive messages from different senders are considered.")
+                    Text("response.definitionText".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
@@ -212,10 +214,11 @@ struct ResponseTimeView: View {
         return result.sorted { $0.date < $1.date }
     }
     
-    // private func colorForUser(_ sender: String) -> Color {
-    //     // Using global colorForUser function from View+Extensions.swift
-    //     return colorForUser(sender)
-    // }
+    private func formatMonthForChart(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: date)
+    }
     
     private func formatTime(_ seconds: TimeInterval) -> String {
         if seconds < 60 {
@@ -263,7 +266,7 @@ struct ResponseTimeCard: View {
                     .fontWeight(.semibold)
                 
                 if isFastest {
-                    Text("⚡ Fastest")
+                    Text("⚡ " + "response.fastest".localized)
                         .font(.caption)
                         .fontWeight(.bold)
                         .padding(.horizontal, 8)
@@ -283,7 +286,7 @@ struct ResponseTimeCard: View {
                     Text(formatTime(averageTime))
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Avg Response")
+                    Text("response.avgResponse".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -294,7 +297,7 @@ struct ResponseTimeCard: View {
                     Text("\(rapidCount)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Rapid Replies")
+                    Text("response.rapidReplies".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

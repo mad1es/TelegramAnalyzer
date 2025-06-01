@@ -1,0 +1,256 @@
+/* 
+  Localizable.strings
+  Uyghur (Cyrillic)
+*/
+
+// MARK: - Navigation & Titles
+"app.name" = "Тәһлил";
+"navigation.summary" = "Хуласә";
+"navigation.chatAnalysis" = "Сөһбәт тәһлили";
+"navigation.settings" = "Тәңшәкләр";
+
+// MARK: - Main Screen
+"main.selectChat" = "Сөһбәт таллаң";
+"main.exportChat" = "Сөһбәтни чиқириң";
+"main.supportedPlatforms" = "Қоллайдиған супилар";
+"main.deleteChat" = "Сөһбәтни өчүрүш";
+"main.openChat" = "Сөһбәтни ечиш";
+"main.telegram" = "Telegram";
+"main.whatsapp" = "WhatsApp";
+"main.noChats" = "Киргүзүлгән сөһбәт йоқ";
+
+// MARK: - Chat Import
+"import.selectFile" = "Һөҗҗәт таллаш";
+"import.processing" = "Бир тәрәп қилиниватиду...";
+"import.error" = "Хаталиқ";
+"import.success" = "Муваппәқийәтлик";
+"import.chatImported" = "Сөһбәт муваппәқийәтлик киргүзүлди";
+
+// MARK: - Analysis Cards
+"analysis.whoTextedMore" = "КИМ КӨПРӘК ЯЗДИ";
+"analysis.longestMessage" = "ӘҢ УЗУН ХӘВӘРЛИМӘ";
+"analysis.ghosting" = "ҖАВАП БӘРМӘСЛИК";
+"analysis.conversationInitiation" = "СӨҺБӘТ БАШЛАШ";
+"analysis.responseTime" = "ҖАВАП БЕРИШ ВАҚТИ";
+"analysis.hourlyActivity" = "СААТЛИҚ ПААЛИЙӘТ";
+"analysis.doubleTexting" = "ҚОШ-ҚОШ ЙЕЗИШ";
+"analysis.mostUsedWords" = "ӘҢ КӨП ИШЛИТИЛГӘН СӨЗЛӘР";
+"analysis.emojiUsage" = "ЕМОҖИ ИШЛИТИШ";
+
+// MARK: - Who Texted More
+"whoTexted.title" = "Ким көпрәк язди?";
+"whoTexted.week" = "Һәптә";
+"whoTexted.month" = "Ай";
+"whoTexted.year" = "Жил";
+"whoTexted.all" = "Һәммиси";
+"whoTexted.totalWords" = "умумий сөз сани";
+"whoTexted.averagePerDay" = "Күнлүк оттуричә сөз сани";
+"whoTexted.textedLess" = "%@ %@%% аз язди";
+"whoTexted.numberOfWordsPerMonth" = "Айлиқ сөз сани";
+"whoTexted.highlights" = "Асаслиқ көрсәткүчләр";
+"whoTexted.totalWordsTitle" = "Умумий сөзләр";
+"whoTexted.averageWordsPerDay" = "Күнлүк оттуричә сөз сани";
+"whoTexted.avgPerDay" = "Күнлүк оттуричә";
+
+// MARK: - Longest Message
+"longest.title" = "Әң узун хәвәрлимә";
+"longest.yourLongest" = "Сизниң әң узун хәвәрлимәңиз";
+"longest.theirLongest" = "Уларниң әң узун хәвәрлимәси";
+"longest.words" = "%d сөз";
+"longest.viewMessage" = "Хәвәрлимәни көрүш";
+"longest.week" = "Һәптә";
+"longest.month" = "Ай";
+"longest.year" = "Жил";
+"longest.all" = "Һәммиси";
+"longest.highlights" = "Асаслиқ көрсәткүчләр";
+"longest.maximumLength" = "Максимал узунлуқи";
+"longest.averageMaxLength" = "Оттуричә макс. узунлуқи";
+"longest.maxLengthPerMonth" = "Айлиқ максимал хәвәрлимә узунлуқи";
+"longest.topMessages" = "%@ алдинқи қатар хәвәрлимиләр";
+"longest.longestMessages" = "Әң узун хәвәрлимиләр";
+"longest.maxLength" = "Макс. узунлуқи";
+"longest.avgTop10" = "Оттуричә алдинқи 10";
+"longest.longestMessage" = "Әң узун хәвәрлимә:";
+
+// MARK: - Ghosting
+"ghosting.title" = "Җавап бәрмәслик тәһлили";
+"ghosting.definition" = "Җавап бәрмәслик ениқлимиси";
+"ghosting.definitionText" = "Җавап бәрмәслик хәвәрлимә 24 сааттин артуқ җавапсиз қалғанда йүз бериду.";
+"ghosting.times" = "%d қетим";
+"ghosting.avgDuration" = "оттуричә: %@";
+"ghosting.timeline" = "Җавап бәрмәслик вақит җәдвили";
+"ghosting.summary" = "Җавап бәрмәслик хуласиси";
+"ghosting.youGhosted" = "Сиз җавап бәрмидиңиз";
+"ghosting.theyGhostedYou" = "%@ сизгә җавап бәрмиди";
+"ghosting.ghostingInstancesPerMonth" = "Айлиқ җавап бәрмәслик вақиәлири";
+"ghosting.theVanishingAct" = "Ғайип болуш";
+"ghosting.ghostingStatistics" = "Җавап бәрмәслик статистикиси";
+"ghosting.topGhoster" = "👻 Асаслиқ җавап бәрмигүчи";
+"ghosting.ghostEvents" = "Җавап бәрмәслик вақиәлири";
+"ghosting.totalHours" = "Җәмий саат";
+"ghosting.longestGhost" = "Әң узун җавап бәрмәслик:";
+"ghosting.ghostingDefinition" = "Җавап бәрмәслик ениқлимиси";
+"ghosting.definitionDetailText" = "Җавап бәрмәслик вақиәси киши хәвәрлимә алғандин кейин бир күн ичидә 3 сааттин артуқ җавап бәрмигәндә йүз бериду.";
+
+// MARK: - Conversation Initiation
+"initiation.title" = "Сөһбәт башлаш";
+"initiation.conversationsStarted" = "башланған сөһбәтләр";
+"initiation.topInitiator" = "Асаслиқ башлиғучи";
+"initiation.percentage" = "%d%%";
+"initiation.youInitiated" = "Сиз башлидиңиз";
+"initiation.theyInitiated" = "%@ башлиди";
+"initiation.times" = "%d қетим";
+"initiation.conversationsPerMonth" = "Айлиқ башланған сөһбәтләр";
+"initiation.initiationStatistics" = "Башлаш статистикиси";
+"initiation.totalInitiations" = "Җәмий башлашлар";
+"initiation.participants" = "Қатнашқучилар";
+"initiation.initiations" = "Башлашлар";
+"initiation.ofTotal" = "умумийдин";
+"initiation.mostActiveMonth" = "Әң актип ай";
+"initiation.conversationsStartedCount" = "%d сөһбәт башланди";
+"initiation.initiationDefinition" = "Башлаш ениқлимиси";
+"initiation.definitionText" = "Сөһбәт башлаш киши 6 сааттин артуқ актипсизлиқтин кейин хәвәрлимә әвәткәндә йүз бериду.";
+
+// MARK: - Response Time
+"response.title" = "Җавап бериш вақти";
+"response.average" = "Оттуричә";
+"response.fastest" = "Әң тез";
+"response.slowest" = "Әң аста";
+"response.yourAverage" = "Сизниң оттуричә";
+"response.theirAverage" = "Уларниң оттуричә";
+"response.fastestResponse" = "Әң тез җавап";
+"response.averageResponseTimePerMonth" = "Айлиқ оттуричә җавап бериш вақти";
+"response.responseTimeStatistics" = "Җавап бериш вақти статистикиси";
+"response.longest" = "Әң узун";
+"response.avgResponse" = "Оттуричә җавап";
+"response.rapidReplies" = "Тез җаваплар";
+"response.rapidExchanges" = "⚡ Тез алмишиш";
+"response.repliesUnder1Minute" = "1 минуттин аз җаваплар";
+"response.rapidRepliesCount" = "%d тез җавап";
+"response.longestWaitTimes" = "⏰ Әң узун сақлаш вақитлири";
+"response.responseTimeDefinition" = "Җавап бериш вақти ениқлимиси";
+"response.definitionText" = "Җавап бериш вақти хәвәрлимә елиш билән җавап әвәтиш арисидики вақит қилип һесаплиниду. Пәқәт охшимиған әвәткүчиләрдин кәлгән изчил хәвәрлимиләр һесапқа елиниду.";
+
+// MARK: - Hourly Activity
+"hourly.title" = "Саатлиқ паалийәт";
+"hourly.mostActiveHour" = "Әң көп йезишқан саат";
+"hourly.messagesAt" = "%d хәвәрлимә саaт %d:00 дә";
+"hourly.activityPattern" = "паалийәт әндизиси";
+"hourly.yourMostActiveHour" = "Сизниң әң актип саатиңиз";
+"hourly.theirMostActiveHour" = "%@ әң актип саат";
+"hourly.messagePyramid" = "Хәвәрлимә пирамидиси";
+"hourly.activityStatistics" = "Паалийәт статистикиси";
+"hourly.messageDistribution" = "Хәвәрлимә тарқилиши";
+"hourly.definitionText" = "Пирамида диаграммиси 24 саат давамида хәвәрлимиләрниң тарқилишини көрситиду. Һәр бир тәрәп бир адәмни ипадиләйду, узунрақ сизиқлар шу сааттики көпрәк паалийәтни көрситиду.";
+
+// MARK: - Double Texting
+"double.title" = "Қош-қош йезиш";
+"double.definition" = "Қош-қош йезиш ениқлимиси";
+"double.definitionText" = "Қош хәт киши җавап алмай туруп, алдинқисидин кейин 1-6 саат арилиғида иккинчи хәт әвәткәндә йүз бериду.";
+"double.total" = "умумий %d қош хәт";
+"double.percentage" = "барлиқ қош хәт пайизи %d%%";
+"double.mostDoubleTexts" = "Бир күндики әң көп қош хәт";
+"double.count" = "%d қош хәтниң умумий сани";
+"double.youDoubleTexted" = "Сиз қош-қош яздиңиз";
+"double.theyDoubleTexted" = "%@ қош-қош язди";
+"double.times" = "%d қетим";
+"double.doubleTextingPerMonth" = "Айлиқ қош-қош йезиш";
+"double.peakDoubleTextingDay" = "📱 Қош-қош йезишниң чоққа күни";
+"double.sentDoubleTexts" = "%@ %d қош-қош хәвәрлимә әвәтти";
+"double.doubleTextingStatistics" = "Қош-қош йезиш статистикиси";
+"double.totalDoubleTexts" = "Җәмий қош-қош йезишлар";
+"double.participants" = "Қатнашқучилар";
+"double.doubleTexts" = "Қош-қош йезишлар";
+"double.ofTotal" = "умумийдин";
+"double.topDoubleTexter" = "📱 Алдинқи қатар әвәткүчи";
+
+// MARK: - Most Used Words
+"words.title" = "Әң көп ишлитилгән сөзләр";
+"words.filterAll" = "Һәммиси";
+"words.mostPopular" = "Әң мәшһур сөз";
+"words.times" = "%d қетим";
+"words.filterInfo" = "Сүзгүч хәвәрлимәси";
+"words.filterDescription" = "Инглизчә, русчә, қазақчә вә уйғурчидики омумий тохташ сөзлири сүзүлиду. Сөзләр чоң-кичик йезилишиға қаримай санилиду.";
+"words.used" = "%d қетим ишлитилди";
+"words.uniqueWords" = "%d өзгичә сөз";
+"words.uniqueWordsTitle" = "Өзгичә сөзләр";
+"words.selectUser" = "Ишләткүчини таллаң";
+"words.allUsers" = "барлиқ ишләткүчиләр";
+"words.mostUsedWords" = "Әң көп ишлитилгән сөзләр";
+"words.noWordsFound" = "Сөз тепилмиди";
+"words.tryDifferentUser" = "Башқа ишләткүчини таллап синап беқиң";
+"words.top10Words" = "Алдинқи 10 сөз";
+"words.completeWordList" = "Толуқ сөз тизимлиги";
+"words.wordStatistics" = "Сөз статистикиси";
+"words.totalCount" = "Умумий сани";
+"words.filterInformation" = "Сүзгүч ахбарати";
+"words.filterDescriptionDetail" = "Инглизчә вә русчидики омумий тохташ сөзлири сүзүлиду (мәсилән, \"the\", \"and\", \"и\", \"в\" вә башқилар). Сөзләр чоң-кичик йезилишиға қаримай санилиду.";
+
+// MARK: - Emoji Usage
+"emoji.title" = "Емоҗи ишлитиш";
+"emoji.topEmoji" = "Даңлиқ емоҗи";
+"emoji.used" = "%d қетим ишлитилди";
+"emoji.totalEmojis" = "Җәмий емоҗи";
+"emoji.uniqueEmojis" = "Өзгичә емоҗи";
+"emoji.mostUsedEmoji" = "Әң көп ишлитилгән емоҗи";
+"emoji.mostUsedEmojis" = "Әң көп ишлитилгән емоҗилар";
+"emoji.selectUser" = "Ишләткүчини таллаң";
+"emoji.allUsers" = "барлиқ ишләткүчиләр";
+"emoji.emojiUsageOverTime" = "Вақит бойичә емоҗи ишлитиш";
+"emoji.noEmojiData" = "%@ үчүн емоҗи санлиқ мәлумати йоқ";
+"emoji.noEmojisFound" = "Емоҗи тепилмиди";
+"emoji.tryDifferentUser" = "Башқа ишләткүчини таллап синап беқиң";
+"emoji.top10Detailed" = "Алдинқи 10 тәпсилий";
+"emoji.emojiStatistics" = "Емоҗи статистикиси";
+"emoji.totalCount" = "Умумий сани";
+"emoji.favorite" = "Яқтурған";
+"emoji.unique" = "Өзгичә";
+"emoji.emojiUsageByPerson" = "Киши бойичә емоҗи ишлитиш";
+"emoji.emojiAnalysis" = "Емоҗи тәһлили";
+"emoji.analysisDescription" = "Барлиқ Unicode емоҗи бәлгүлири санилиду. Һәр бир емоҗи қатарларда яки бирикмиләрдә ишлитилгәндиму айрим санилиду.";
+"emoji.percentOfAllEmojis" = "барлиқ емоҗиларниң %.1f%%";
+"emoji.usedTimes" = "%d қетим ишлитилди";
+
+// MARK: - Chat Analysis
+"analysis.thisChat" = "Бу сөһбәт";
+"analysis.textedLess" = "%@ азрақ язди";
+"analysis.theirLongestMessage" = "%@ әң узун хәвәрлимәси";
+
+// MARK: - Settings
+"settings.title" = "Тәңшәкләр";
+"settings.theme" = "Тема";
+"settings.themeSystem" = "Система";
+"settings.themeLight" = "Йоруқ";
+"settings.themeDark" = "Қараңғу";
+"settings.language" = "Тил";
+"settings.about" = "Әп һәққидә";
+"settings.version" = "Нәшри";
+"settings.developer" = "Иҗадийәтчи";
+
+// MARK: - Time Formatting
+"time.lessThanMinute" = "<1мин";
+"time.minutes" = "%dмин";
+"time.hoursMinutes" = "%dсаат %dмин";
+"time.hours" = "%dсаат";
+"time.days" = "%d күн";
+
+// MARK: - Common Actions
+"action.view" = "Көрүш";
+"action.close" = "Яп";
+"action.delete" = "Өчүрүш";
+"action.cancel" = "Бекар қилиш";
+"action.confirm" = "Җәзмләш";
+"action.select" = "Таллаш";
+"action.done" = "Тамам";
+
+// MARK: - Common Words
+"common.you" = "Сиз";
+"common.them" = "У";
+"common.total" = "Җәмий";
+"common.average" = "Оттуричә";
+"common.messages" = "Хәвәрлимиләр";
+"common.words" = "Сөзләр";
+"common.loading" = "Йүклиниватиду...";
+"common.noData" = "Санлиқ мәлумат йоқ";
+"common.error" = "Хаталиқ";
+"common.unknown" = "Намәлум"; 

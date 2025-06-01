@@ -25,11 +25,16 @@ class AnalysisCache {
     }
 }
 
-struct Chat: Identifiable, Codable {
+struct Chat: Identifiable, Codable, Equatable {
     let id: Int
     let name: String
     let type: String
     let messages: [Message]
+    
+    // MARK: - Equatable
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     // MARK: - Analysis Cache
     private static let analysisCache = AnalysisCache()
@@ -579,6 +584,10 @@ struct Chat: Identifiable, Codable {
             
             let stopwordsRussian = Set(["и", "в", "не", "на", "я", "быть", "он", "с", "что", "а", "по", "это", "она", "этот", "к", "но", "они", "мы", "как", "из", "у", "который", "то", "за", "свой", "что", "ее", "так", "же", "все", "себя", "ну", "ты", "от", "мой", "еще", "нет", "о", "из", "его", "да", "их", "для", "или", "же", "бы", "уже", "если", "только", "может", "тут", "там", "этой", "один", "два", "три", "где", "ну", "да", "нет", "вот", "при", "над", "под", "до", "после", "во", "про"])
             
+            let stopwordsKazakh = Set(["және", "бен", "мен", "ол", "бұл", "не", "де", "да", "ма", "ме", "ба", "бе", "па", "пе", "жоқ", "бар", "үшін", "бір", "екі", "үш", "осы", "сол", "өз", "сіз", "біз", "олар", "қандай", "қашан", "қайда", "неге", "кім", "ең", "тек", "әлі", "енді", "сонда", "онда", "мұнда", "ана", "мына", "сондай", "осындай", "барлық", "кез", "келген", "әр", "сайын", "туралы", "арқылы", "кейін", "дейін", "қарай", "сияқты", "ретінде"])
+            
+            let stopwordsUyghur = Set(["вә", "билән", "мән", "сән", "у", "бу", "немә", "қандақ", "қачан", "нәдә", "ким", "үчүн", "бир", "икки", "үч", "бар", "йоқ", "һәм", "яки", "лекин", "әмма", "чүнки", "шуңа", "дә", "му", "чу", "ғу", "қу", "кән", "ған", "қан", "мақ", "мәк", "ш", "лиқ", "лик", "сиз", "ниң", "ни", "ға", "қа", "кә", "гә", "да", "та", "дин", "тин", "дәк", "тәк", "чә", "ла", "лә"])
+            
             var wordCount: [String: Int] = [:]
             let messagesToAnalyze = sender != nil ? messages(from: sender!) : messages
             
@@ -586,7 +595,7 @@ struct Chat: Identifiable, Codable {
                 let words = message.text.lowercased()
                     .components(separatedBy: .whitespacesAndNewlines)
                     .flatMap { $0.components(separatedBy: .punctuationCharacters) }
-                    .filter { !$0.isEmpty && !stopwordsEnglish.contains($0) && !stopwordsRussian.contains($0) }
+                    .filter { !$0.isEmpty && !stopwordsEnglish.contains($0) && !stopwordsRussian.contains($0) && !stopwordsKazakh.contains($0) && !stopwordsUyghur.contains($0) }
                 
                 for word in words {
                     wordCount[word, default: 0] += 1

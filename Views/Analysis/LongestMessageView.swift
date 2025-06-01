@@ -13,10 +13,10 @@ struct LongestMessageView: View {
         
         var displayName: String {
             switch self {
-            case .week: return "Week"
-            case .month: return "Month"
-            case .year: return "Year"
-            case .all: return "All"
+            case .week: return "longest.week".localized
+            case .month: return "longest.month".localized
+            case .year: return "longest.year".localized
+            case .all: return "longest.all".localized
             }
         }
     }
@@ -75,7 +75,6 @@ struct LongestMessageView: View {
                     .padding(.horizontal)
             }
             
-            // Time range selector
             HStack(spacing: 0) {
                 ForEach(TimeRange.allCases, id: \.self) { range in
                     Button(action: {
@@ -105,7 +104,7 @@ struct LongestMessageView: View {
     
     private var chartSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Maximum message length per month")
+            Text("longest.maxLengthPerMonth".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
@@ -127,7 +126,11 @@ struct LongestMessageView: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { value in
                     AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated))
+                    AxisValueLabel {
+                        if let date = value.as(Date.self) {
+                            Text(formatMonthForChart(date))
+                        }
+                    }
                 }
             }
             .chartYAxis {
@@ -159,30 +162,28 @@ struct LongestMessageView: View {
     
     private var highlightsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Highlights")
+            Text("longest.highlights".localized)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
-            
-            // Overall stats
             HStack(spacing: 16) {
                 StatCard(
                     icon: "text.alignleft",
                     value: "\(overallMaxLength)",
-                    title: "Maximum Length",
+                    title: "longest.maximumLength".localized,
                     color: .blue
                 )
                 
                 StatCard(
                     icon: "chart.line.uptrend.xyaxis",
                     value: "\(overallAvgMaxLength)",
-                    title: "Average Max Length",
+                    title: "longest.averageMaxLength".localized,
                     color: .orange
                 )
             }
             .padding(.horizontal)
             
-            // Per sender breakdown
+            // per sender breakdown
             ForEach(chat.senders, id: \.self) { sender in
                 MessageLengthCard(
                     sender: sender,
@@ -198,7 +199,7 @@ struct LongestMessageView: View {
     
     private var longestMessagesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Longest Messages")
+            Text("longest.longestMessages".localized)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
@@ -209,7 +210,7 @@ struct LongestMessageView: View {
                         Circle()
                             .fill(colorForUser(sender))
                             .frame(width: 12, height: 12)
-                        Text("\(sender)'s Top Messages")
+                        Text("\(sender)'s " + "longest.topMessages".localized(with: sender))
                             .font(.headline)
                             .fontWeight(.semibold)
                         Spacer()
@@ -232,7 +233,6 @@ struct LongestMessageView: View {
     private func getChartData() -> [(date: Date, data: [String: Int])] {
         var result: [(date: Date, data: [String: Int])] = []
         
-        // Get all months in the chat timeline
         let allMonths = Set(chat.messages.compactMap { message in
             Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: message.date))
         }).sorted()
@@ -250,10 +250,11 @@ struct LongestMessageView: View {
         return result
     }
     
-    // private func colorForUser(_ sender: String) -> Color {
-    //     // Using global colorForUser function from View+Extensions.swift
-    //     return colorForUser(sender)
-    // }
+    private func formatMonthForChart(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        return formatter.string(from: date)
+    }
 }
 
 struct MessageLengthCard: View {
@@ -280,7 +281,7 @@ struct MessageLengthCard: View {
                     Text("\(maxLength)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Max Length")
+                    Text("longest.maxLength".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -291,7 +292,7 @@ struct MessageLengthCard: View {
                     Text("\(averageTop10)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Avg Top 10")
+                    Text("longest.avgTop10".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -299,7 +300,7 @@ struct MessageLengthCard: View {
             
             if let longestMessage = longestMessage {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Longest message:")
+                    Text("longest.longestMessage".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(String(longestMessage.text.prefix(100)) + (longestMessage.text.count > 100 ? "..." : ""))

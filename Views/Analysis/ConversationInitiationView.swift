@@ -45,7 +45,7 @@ struct ConversationInitiationView: View {
     
     private var chartSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Conversation initiations per month")
+            Text("initiation.conversationsPerMonth".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
@@ -63,7 +63,11 @@ struct ConversationInitiationView: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { value in
                     AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated))
+                    AxisValueLabel {
+                        if let date = value.as(Date.self) {
+                            Text(formatMonthForChart(date))
+                        }
+                    }
                 }
             }
             .chartYAxis {
@@ -95,30 +99,30 @@ struct ConversationInitiationView: View {
     
     private var statisticsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Initiation Statistics")
+            Text("initiation.initiationStatistics".localized)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.horizontal)
             
-            // Overall stats
+            // overall stats
             HStack(spacing: 16) {
                 StatCard(
                     icon: "bubble.left",
                     value: "\(totalInitiations)",
-                    title: "Total Initiations",
+                    title: "initiation.totalInitiations".localized,
                     color: .blue
                 )
                 
                 StatCard(
                     icon: "chart.pie",
                     value: "\(chat.senders.count)",
-                    title: "Participants",
+                    title: "initiation.participants".localized,
                     color: .green
                 )
             }
             .padding(.horizontal)
             
-            // Per sender breakdown
+            // per sender breakdown
             ForEach(initiationData, id: \.sender) { data in
                 let senderTotal = data.initiationsByMonth.reduce(0) { $0 + $1.count }
                 let percentage = totalInitiations > 0 ? Double(senderTotal) / Double(totalInitiations) * 100 : 0
@@ -139,7 +143,7 @@ struct ConversationInitiationView: View {
     private var mostActiveMonthSection: some View {
         if let mostActiveMonth = mostActiveMonth {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Most Active Month")
+                Text("initiation.mostActiveMonth".localized)
                     .font(.headline)
                     .padding(.horizontal)
                 
@@ -149,7 +153,7 @@ struct ConversationInitiationView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     
-                    Text("\(mostActiveMonth.count) conversations started")
+                    Text("initiation.conversationsStartedCount".localized(with: mostActiveMonth.count))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -166,11 +170,11 @@ struct ConversationInitiationView: View {
     
     private var definitionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Initiation Definition")
+            Text("initiation.initiationDefinition".localized)
                 .font(.headline)
                 .padding(.horizontal)
             
-            Text("A conversation initiation occurs when a person sends a message after more than 6 hours of inactivity.")
+            Text("initiation.definitionText".localized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.horizontal)
@@ -193,11 +197,7 @@ struct ConversationInitiationView: View {
         
         return result.sorted { $0.date < $1.date }
     }
-    
-    // private func colorForUser(_ sender: String) -> Color {
-    //     // Using global colorForUser function from View+Extensions.swift
-    //     return colorForUser(sender)
-    // }
+
     
     private func isTopInitiator(sender: String, allData: [(sender: String, initiationsByMonth: [(date: Date, count: Int)])]) -> Bool {
         let senderTotal = allData.first { $0.sender == sender }?.initiationsByMonth.reduce(0) { $0 + $1.count } ?? 0
@@ -219,6 +219,21 @@ struct ConversationInitiationView: View {
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
+        formatter.locale = Locale.current
+        return formatter.string(from: date)
+    }
+    
+    private func formatDateForMonthView(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        formatter.locale = Locale.current
+        return formatter.string(from: date)
+    }
+    
+    private func formatMonthForChart(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        formatter.locale = Locale.current
         return formatter.string(from: date)
     }
 }
@@ -241,7 +256,7 @@ struct InitiationStatCard: View {
                     .fontWeight(.semibold)
                 
                 if isTopInitiator {
-                    Text("🚀 Top Initiator")
+                    Text("🚀 " + "initiation.topInitiator".localized)
                         .font(.caption)
                         .fontWeight(.bold)
                         .padding(.horizontal, 8)
@@ -261,7 +276,7 @@ struct InitiationStatCard: View {
                     Text("\(totalInitiations)")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Initiations")
+                    Text("initiation.initiations".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -272,13 +287,13 @@ struct InitiationStatCard: View {
                     Text(String(format: "%.1f%%", percentage))
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("of Total")
+                    Text("initiation.ofTotal".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             }
             
-            // Progress bar
+            // progress bar
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)

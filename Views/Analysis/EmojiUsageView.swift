@@ -6,15 +6,15 @@ struct EmojiUsageView: View {
     @State private var selectedSender: String? = nil
     
     var body: some View {
-        // Calculate data once at the top level
+        // calculate data once at the top level
         let emojiData = chat.enhancedEmojiAnalysis(for: selectedSender)
         let totalEmojis = emojiData.reduce(0) { $0 + $1.count }
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Sender selection
+                // sender selection
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Select User")
+                    Text("emoji.selectUser".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -22,7 +22,7 @@ struct EmojiUsageView: View {
                         Button(action: {
                             selectedSender = nil
                         }) {
-                            Text("all users")
+                            Text("emoji.allUsers".localized)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
                                 .padding(.vertical, 8)
@@ -59,10 +59,10 @@ struct EmojiUsageView: View {
                     .padding(.horizontal)
                 }
                 
-                // Emoji usage chart (only if specific sender is selected)
+                // emoji usage chart
                 if let selectedSender = selectedSender {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Emoji usage over time")
+                        Text("emoji.emojiUsageOverTime".localized)
                             .font(.headline)
                             .padding(.horizontal)
                         
@@ -81,7 +81,11 @@ struct EmojiUsageView: View {
                             .chartXAxis {
                                 AxisMarks(values: .stride(by: .month)) { value in
                                     AxisGridLine()
-                                    AxisValueLabel(format: .dateTime.month(.abbreviated))
+                                    AxisValueLabel {
+                                        if let date = value.as(Date.self) {
+                                            Text(formatMonthForChart(date))
+                                        }
+                                    }
                                 }
                             }
                             .chartYAxis {
@@ -95,7 +99,7 @@ struct EmojiUsageView: View {
                             )
                             .padding(.horizontal)
                         } else {
-                            Text("No emoji usage data for \(selectedSender)")
+                            Text("emoji.noEmojiData".localized(with: selectedSender))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding()
@@ -109,9 +113,9 @@ struct EmojiUsageView: View {
                     }
                 }
                 
-                // Top emojis
+                    // top emojis
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Most Used Emojis")
+                    Text("emoji.mostUsedEmojis".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
@@ -120,17 +124,17 @@ struct EmojiUsageView: View {
                         VStack(spacing: 12) {
                             Text("😶")
                                 .font(.system(size: 48))
-                            Text("No emojis found")
+                            Text("emoji.noEmojisFound".localized)
                                 .font(.headline)
                                 .foregroundColor(.secondary)
-                            Text("Try selecting a different user")
+                            Text("emoji.tryDifferentUser".localized)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 40)
                     } else {
-                        // Top 15 emojis grid
+                        // top 15 emojis   
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5), spacing: 16) {
                             ForEach(Array(emojiData.prefix(15).enumerated()), id: \.element.emoji) { index, emojiInfo in
                                 EmojiCard(
@@ -143,9 +147,9 @@ struct EmojiUsageView: View {
                         }
                         .padding(.horizontal)
                         
-                        // Detailed list for top 10
+                        //  list for top 10
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Top 10 Detailed")
+                            Text("emoji.top10Detailed".localized)
                                 .font(.headline)
                                 .padding(.horizontal)
                             
@@ -162,10 +166,10 @@ struct EmojiUsageView: View {
                     }
                 }
                 
-                // Statistics
+                // stats
                 if !emojiData.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Emoji Statistics")
+                        Text("emoji.emojiStatistics".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
@@ -174,14 +178,14 @@ struct EmojiUsageView: View {
                             StatCard(
                                 icon: "face.smiling",
                                 value: "\(emojiData.count)",
-                                title: "Unique Emojis",
+                                title: "emoji.uniqueEmojis".localized,
                                 color: .yellow
                             )
                             
                             StatCard(
                                 icon: "sum",
                                 value: "\(totalEmojis)",
-                                title: "Total Count",
+                                title: "emoji.totalCount".localized,
                                 color: .orange
                             )
                         }
@@ -189,7 +193,7 @@ struct EmojiUsageView: View {
                         
                         if let topEmoji = emojiData.first {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Most Popular Emoji")
+                                Text("emoji.mostUsedEmoji".localized)
                                     .font(.headline)
                                 
                                 HStack {
@@ -197,7 +201,7 @@ struct EmojiUsageView: View {
                                         .font(.system(size: 40))
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("Used \(topEmoji.count) times")
+                                        Text("emoji.usedTimes".localized(with: topEmoji.count))
                                             .font(.subheadline)
                                             .foregroundColor(.primary)
                                         
@@ -222,7 +226,7 @@ struct EmojiUsageView: View {
                 // Per sender comparison (only when all users selected)
                 if selectedSender == nil && !chat.senders.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Emoji Usage by Person")
+                        Text("emoji.emojiUsageByPerson".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
@@ -243,13 +247,13 @@ struct EmojiUsageView: View {
                     }
                 }
                 
-                // Information
+                // infor
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Emoji Analysis")
+                    Text("emoji.emojiAnalysis".localized)
                         .font(.headline)
                         .padding(.horizontal)
                     
-                    Text("All Unicode emoji characters are counted. Each emoji is counted separately, even when used in sequences or combinations.")
+                    Text("emoji.analysisDescription".localized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
@@ -260,7 +264,7 @@ struct EmojiUsageView: View {
                 .padding(.horizontal)
             }
         }
-        .navigationTitle("Emoji Usage")
+        .navigationTitle("emoji.title".localized)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
