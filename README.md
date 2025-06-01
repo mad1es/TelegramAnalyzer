@@ -10,6 +10,13 @@ Features
 	•	Conversation starter tracking
 	•	Emoji usage breakdown
 
+ Languages
+ 	•	English
+  	•	Russian
+   	• 	Kazakh
+	
+
+
 How it works
 	1.	Export a chat from Telegram (JSON format). Only on Desktop version!!!
 	2.	Open the app, import the file
