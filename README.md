@@ -14,6 +14,7 @@ Features
  	•	English
   	•	Russian
    	• 	Kazakh
+     And more
 	
 
 
