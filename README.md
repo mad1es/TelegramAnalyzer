@@ -37,7 +37,7 @@ Models/
   Message.swift      // message structure
 
 Views/
-  Main/              // app navigation & file import
+  Main/              // app navigation 
   Analysis/          // charts and data views
 
 Adding new analysis
