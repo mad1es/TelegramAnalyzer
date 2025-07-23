@@ -53,8 +53,8 @@ open TelegramAnalyzer.xcodeproj
 TODO (maybe)
 	•	Export results (PDF/CSV)
 	•	Sticker/sticker pack usage
-	•	Dark mode (low priority) // added
-	•	Semantic analysis. By using AI
+	•	Dark mode (low priority) // added 
+	•	Semantic analysis. By using AI // nlp
  	
 
 Author
