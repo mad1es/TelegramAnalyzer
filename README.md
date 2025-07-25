@@ -1,5 +1,5 @@
 Telegram Chat Analyzer
-
+you
 A lightweight iOS app to analyze Telegram chat exports. Built for curiosity and occasional ego checks.
 
 Features
