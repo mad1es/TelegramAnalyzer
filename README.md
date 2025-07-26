@@ -3,10 +3,15 @@ Telegram Chat Analyzer
 A lightweight iOS app to analyze Telegram chat exports. Built for curiosity and occasional ego checks.
 
 Features
+
 	•	Message count per participant
+ 
 	•	Average response time & ghosting detection
+ 
 	•	Activity heatmap by time of day
+ 
 	•	Message length stats
+ 
 	•	Conversation starter tracking
  
 	•	Emoji usage breakdown
