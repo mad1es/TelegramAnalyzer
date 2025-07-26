@@ -8,6 +8,7 @@ Features
 	•	Activity heatmap by time of day
 	•	Message length stats
 	•	Conversation starter tracking
+ 
 	•	Emoji usage breakdown
 
  Languages
